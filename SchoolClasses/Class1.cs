@@ -8,6 +8,7 @@ namespace SchoolClasses
 {
     public class SchoolEntry : ISaveable
     {
+        public static List<SchoolEntry> allSchools;
         public List<ContactEntry> schoolContacts;
         public string schoolName;
         public string schoolScope;
@@ -45,5 +46,29 @@ namespace SchoolClasses
     {
         void Save();
         void Load();
+    }
+
+    public class AppController
+    {
+        public List<ISaveable> allEntries;
+
+        public static ISaveable currentRecord;
+
+        public void saveAll()
+        {
+            foreach(var entry in allEntries)
+            {
+                entry.Save();
+                entry.Load();
+            }
+        }
+
+        public void Register(ISaveable entry)
+        {
+            if (!allEntries.Contains(entry))
+            {
+                allEntries.Add(entry);
+            }
+        }
     }
 }
