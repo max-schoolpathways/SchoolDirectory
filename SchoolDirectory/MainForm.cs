@@ -139,5 +139,24 @@ namespace SchoolDirectory
             formRefresh();
             formRefresh();
         }
+
+        private void MainWindowTable_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void contactDeleteButton_Click(object sender, EventArgs e)
+        {
+            var confirmResult = MessageBox.Show("Are you sure you wish to delete this record?", "Confirm Delete", MessageBoxButtons.YesNo);
+            if(confirmResult == DialogResult.Yes)
+            {
+                ContactEntry.currentContact.Delete();
+                formRefresh();
+            }
+            else
+            {
+
+            } 
+        }
     }
 }

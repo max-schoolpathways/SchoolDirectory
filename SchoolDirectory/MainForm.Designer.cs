@@ -70,6 +70,8 @@
             this.newGroupButton = new System.Windows.Forms.Button();
             this.newRecordButton = new System.Windows.Forms.Button();
             this.contactSavebutton = new System.Windows.Forms.Button();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.contactDeleteButton = new System.Windows.Forms.Button();
             this.WrapperTable.SuspendLayout();
             this.MainWindowToolstrip.SuspendLayout();
             this.RecordStatusStrip.SuspendLayout();
@@ -85,6 +87,7 @@
             this.tableLayoutPanel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.contactEntryBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.schoolEntryBindingSource)).BeginInit();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // WrapperTable
@@ -102,7 +105,7 @@
             this.WrapperTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 82.82442F));
             this.WrapperTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.30534F));
             this.WrapperTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.WrapperTable.Size = new System.Drawing.Size(592, 299);
+            this.WrapperTable.Size = new System.Drawing.Size(592, 316);
             this.WrapperTable.TabIndex = 1;
             // 
             // MainWindowToolstrip
@@ -114,7 +117,7 @@
             this.deleteButton});
             this.MainWindowToolstrip.Location = new System.Drawing.Point(0, 0);
             this.MainWindowToolstrip.Name = "MainWindowToolstrip";
-            this.MainWindowToolstrip.Size = new System.Drawing.Size(592, 21);
+            this.MainWindowToolstrip.Size = new System.Drawing.Size(592, 22);
             this.MainWindowToolstrip.TabIndex = 0;
             this.MainWindowToolstrip.Text = "toolStrip1";
             // 
@@ -124,7 +127,7 @@
             this.refreshButton.Image = ((System.Drawing.Image)(resources.GetObject("refreshButton.Image")));
             this.refreshButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.refreshButton.Name = "refreshButton";
-            this.refreshButton.Size = new System.Drawing.Size(23, 18);
+            this.refreshButton.Size = new System.Drawing.Size(23, 19);
             this.refreshButton.Text = "toolStripButton1";
             this.refreshButton.ToolTipText = "Refresh";
             this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
@@ -135,7 +138,7 @@
             this.saveButton.Image = ((System.Drawing.Image)(resources.GetObject("saveButton.Image")));
             this.saveButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(23, 18);
+            this.saveButton.Size = new System.Drawing.Size(23, 19);
             this.saveButton.Text = "toolStripButton1";
             this.saveButton.ToolTipText = "Save";
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
@@ -146,7 +149,7 @@
             this.deleteButton.Image = ((System.Drawing.Image)(resources.GetObject("deleteButton.Image")));
             this.deleteButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(23, 18);
+            this.deleteButton.Size = new System.Drawing.Size(23, 19);
             this.deleteButton.Text = "toolStripButton1";
             this.deleteButton.ToolTipText = "Delete";
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
@@ -158,28 +161,28 @@
             this.currentRecordName,
             this.currentGroupName,
             this.lastUpdatedDateTime});
-            this.RecordStatusStrip.Location = new System.Drawing.Point(0, 268);
+            this.RecordStatusStrip.Location = new System.Drawing.Point(0, 283);
             this.RecordStatusStrip.Name = "RecordStatusStrip";
-            this.RecordStatusStrip.Size = new System.Drawing.Size(592, 31);
+            this.RecordStatusStrip.Size = new System.Drawing.Size(592, 33);
             this.RecordStatusStrip.TabIndex = 1;
             this.RecordStatusStrip.Text = "statusStrip1";
             // 
             // currentRecordName
             // 
             this.currentRecordName.Name = "currentRecordName";
-            this.currentRecordName.Size = new System.Drawing.Size(114, 26);
+            this.currentRecordName.Size = new System.Drawing.Size(114, 28);
             this.currentRecordName.Text = "currentRecordName";
             // 
             // currentGroupName
             // 
             this.currentGroupName.Name = "currentGroupName";
-            this.currentGroupName.Size = new System.Drawing.Size(124, 26);
+            this.currentGroupName.Size = new System.Drawing.Size(124, 28);
             this.currentGroupName.Text = "@ currentGroupName";
             // 
             // lastUpdatedDateTime
             // 
             this.lastUpdatedDateTime.Name = "lastUpdatedDateTime";
-            this.lastUpdatedDateTime.Size = new System.Drawing.Size(193, 26);
+            this.lastUpdatedDateTime.Size = new System.Drawing.Size(193, 28);
             this.lastUpdatedDateTime.Text = "Last Updated lastUpdatedDateTime";
             // 
             // MainWindowTable
@@ -194,14 +197,15 @@
             this.MainWindowTable.Controls.Add(this.GroupList, 0, 0);
             this.MainWindowTable.Controls.Add(this.newGroupButton, 0, 1);
             this.MainWindowTable.Controls.Add(this.newRecordButton, 1, 1);
-            this.MainWindowTable.Controls.Add(this.contactSavebutton, 2, 1);
-            this.MainWindowTable.Location = new System.Drawing.Point(3, 24);
+            this.MainWindowTable.Controls.Add(this.flowLayoutPanel1, 2, 1);
+            this.MainWindowTable.Location = new System.Drawing.Point(3, 25);
             this.MainWindowTable.Name = "MainWindowTable";
             this.MainWindowTable.RowCount = 2;
             this.MainWindowTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.MainWindowTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.MainWindowTable.Size = new System.Drawing.Size(586, 241);
+            this.MainWindowTable.Size = new System.Drawing.Size(586, 255);
             this.MainWindowTable.TabIndex = 2;
+            this.MainWindowTable.Paint += new System.Windows.Forms.PaintEventHandler(this.MainWindowTable_Paint);
             // 
             // tableLayoutPanel1
             // 
@@ -224,7 +228,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 91F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(401, 205);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(401, 219);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // tableLayoutPanel7
@@ -400,7 +404,7 @@
             this.noteGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.noteGroupBox.Location = new System.Drawing.Point(203, 98);
             this.noteGroupBox.Name = "noteGroupBox";
-            this.noteGroupBox.Size = new System.Drawing.Size(195, 104);
+            this.noteGroupBox.Size = new System.Drawing.Size(195, 118);
             this.noteGroupBox.TabIndex = 9;
             this.noteGroupBox.TabStop = false;
             this.noteGroupBox.Text = "Contact Notes";
@@ -410,7 +414,7 @@
             this.contactNoteBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.contactNoteBox.Location = new System.Drawing.Point(3, 16);
             this.contactNoteBox.Name = "contactNoteBox";
-            this.contactNoteBox.Size = new System.Drawing.Size(189, 85);
+            this.contactNoteBox.Size = new System.Drawing.Size(189, 99);
             this.contactNoteBox.TabIndex = 4;
             this.contactNoteBox.Text = "Contact Notes";
             // 
@@ -420,7 +424,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(3, 98);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(194, 104);
+            this.groupBox1.Size = new System.Drawing.Size(194, 118);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "School Notes";
@@ -430,7 +434,7 @@
             this.schoolNotebox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.schoolNotebox.Location = new System.Drawing.Point(3, 16);
             this.schoolNotebox.Name = "schoolNotebox";
-            this.schoolNotebox.Size = new System.Drawing.Size(188, 85);
+            this.schoolNotebox.Size = new System.Drawing.Size(188, 99);
             this.schoolNotebox.TabIndex = 5;
             this.schoolNotebox.Text = "School Notes";
             // 
@@ -475,7 +479,7 @@
             this.RecordList.FormattingEnabled = true;
             this.RecordList.Location = new System.Drawing.Point(89, 3);
             this.RecordList.Name = "RecordList";
-            this.RecordList.Size = new System.Drawing.Size(87, 205);
+            this.RecordList.Size = new System.Drawing.Size(87, 219);
             this.RecordList.TabIndex = 1;
             this.RecordList.SelectedIndexChanged += new System.EventHandler(this.RecordList_SelectedIndexChanged);
             // 
@@ -490,7 +494,7 @@
             this.GroupList.FormattingEnabled = true;
             this.GroupList.Location = new System.Drawing.Point(3, 3);
             this.GroupList.Name = "GroupList";
-            this.GroupList.Size = new System.Drawing.Size(80, 205);
+            this.GroupList.Size = new System.Drawing.Size(80, 219);
             this.GroupList.TabIndex = 0;
             this.GroupList.SelectedIndexChanged += new System.EventHandler(this.GroupList_SelectedIndexChanged);
             // 
@@ -501,7 +505,7 @@
             // newGroupButton
             // 
             this.newGroupButton.Dock = System.Windows.Forms.DockStyle.Top;
-            this.newGroupButton.Location = new System.Drawing.Point(3, 214);
+            this.newGroupButton.Location = new System.Drawing.Point(3, 228);
             this.newGroupButton.Name = "newGroupButton";
             this.newGroupButton.Size = new System.Drawing.Size(80, 23);
             this.newGroupButton.TabIndex = 3;
@@ -512,7 +516,7 @@
             // newRecordButton
             // 
             this.newRecordButton.Dock = System.Windows.Forms.DockStyle.Top;
-            this.newRecordButton.Location = new System.Drawing.Point(89, 214);
+            this.newRecordButton.Location = new System.Drawing.Point(89, 228);
             this.newRecordButton.Name = "newRecordButton";
             this.newRecordButton.Size = new System.Drawing.Size(87, 23);
             this.newRecordButton.TabIndex = 4;
@@ -524,7 +528,7 @@
             // 
             this.contactSavebutton.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.contactSavebutton.AutoSize = true;
-            this.contactSavebutton.Location = new System.Drawing.Point(503, 214);
+            this.contactSavebutton.Location = new System.Drawing.Point(232, 3);
             this.contactSavebutton.Name = "contactSavebutton";
             this.contactSavebutton.Size = new System.Drawing.Size(80, 23);
             this.contactSavebutton.TabIndex = 5;
@@ -532,11 +536,36 @@
             this.contactSavebutton.UseVisualStyleBackColor = true;
             this.contactSavebutton.Click += new System.EventHandler(this.contactSavebutton_Click);
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.contactDeleteButton);
+            this.flowLayoutPanel1.Controls.Add(this.contactSavebutton);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(179, 225);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(407, 30);
+            this.flowLayoutPanel1.TabIndex = 5;
+            // 
+            // contactDeleteButton
+            // 
+            this.contactDeleteButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.contactDeleteButton.AutoSize = true;
+            this.contactDeleteButton.Location = new System.Drawing.Point(318, 3);
+            this.contactDeleteButton.Name = "contactDeleteButton";
+            this.contactDeleteButton.Size = new System.Drawing.Size(86, 23);
+            this.contactDeleteButton.TabIndex = 6;
+            this.contactDeleteButton.Text = "Delete Record";
+            this.contactDeleteButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.contactDeleteButton.UseVisualStyleBackColor = true;
+            this.contactDeleteButton.Click += new System.EventHandler(this.contactDeleteButton_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(592, 299);
+            this.ClientSize = new System.Drawing.Size(592, 316);
             this.Controls.Add(this.WrapperTable);
             this.Name = "MainWindow";
             this.Text = "SchoolDirectory";
@@ -548,7 +577,6 @@
             this.RecordStatusStrip.ResumeLayout(false);
             this.RecordStatusStrip.PerformLayout();
             this.MainWindowTable.ResumeLayout(false);
-            this.MainWindowTable.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel7.PerformLayout();
@@ -566,6 +594,8 @@
             this.tableLayoutPanel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.contactEntryBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.schoolEntryBindingSource)).EndInit();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -612,6 +642,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.TextBox loginField;
         private System.Windows.Forms.Label loginLabel;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Button contactDeleteButton;
     }
 }
 

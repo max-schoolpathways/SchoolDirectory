@@ -55,6 +55,11 @@ namespace SchoolClasses
         {
             contactLogin = login;
         }
+        public void Delete()
+        {
+            ContactEntry.currentContact.contactSchool.schoolContacts.Remove(this);
+            ContactEntry.currentContact.contactSchool = null;
+        }
         
     }
 
