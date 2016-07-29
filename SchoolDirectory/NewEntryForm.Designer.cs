@@ -41,7 +41,7 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 45F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 43F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.groupLabel, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
@@ -101,12 +101,13 @@
             // 
             this.groupList.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.groupList.FormattingEnabled = true;
-            this.groupList.Location = new System.Drawing.Point(48, 3);
+            this.groupList.Location = new System.Drawing.Point(48, 7);
             this.groupList.Name = "groupList";
-            this.groupList.Size = new System.Drawing.Size(120, 52);
+            this.groupList.Size = new System.Drawing.Size(120, 43);
             this.groupList.Sorted = true;
             this.groupList.TabIndex = 5;
             this.groupList.Visible = false;
+            this.groupList.SelectedIndexChanged += new System.EventHandler(this.groupList_SelectedIndexChanged);
             // 
             // NewEntryForm
             // 

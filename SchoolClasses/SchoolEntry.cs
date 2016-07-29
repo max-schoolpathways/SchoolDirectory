@@ -15,10 +15,12 @@ namespace SchoolClasses
         public string schoolScope = "";
         public string schoolNotes = "";
 
-        void ISaveable.Save() {
+        
 
+        public void Save() {
+            
         }
-        void ISaveable.Load()
+        public void Load()
         {
 
         }
@@ -27,19 +29,22 @@ namespace SchoolClasses
     
     public class ContactEntry: ISaveable
     {
+        public static List<ContactEntry> allEntries = new List<ContactEntry>();
+        public static ContactEntry currentContact;
         public string contactName;
-        public string contactLoginName;
-        public List<string> contactPhoneList;
-        public string contactEmail;
-        public string contactNotes;
+        public string contactLoginName = "";
+        public string contactPhone1 = "";
+        public string contactPhone2 = "";
+        public string contactEmail = "";
+        public string contactNotes = "";
         public SchoolEntry contactSchool;
 
 
-        void ISaveable.Save()
+        public void Save()
         {
 
         }
-        void ISaveable.Load()
+        public void Load()
         {
 
         }
@@ -59,25 +64,54 @@ namespace SchoolClasses
 
     public class AppController
     {
-        public List<ISaveable> allEntries;
+        public static List<ISaveable> allEntries;
 
-        public static ISaveable currentRecord;
+        public static ISaveable currentRecord; //deprecate
+        public static SchoolEntry currentSchool;
+        public static ContactEntry currentContact;
 
-        public void saveAll()
+        public static void saveAll()
         {
-            foreach(var entry in allEntries)
+            foreach(SchoolEntry entry in SchoolEntry.allSchools)
+            {
+                entry.Save();
+                entry.Load();
+            }
+            foreach(ContactEntry entry in ContactEntry.allEntries)
             {
                 entry.Save();
                 entry.Load();
             }
         }
 
-        public void Register(ISaveable entry)
+        
+        public static SchoolEntry GetSchool(string schoolname)
         {
-            if (!allEntries.Contains(entry))
+            SchoolEntry entryCheck = null;
+            foreach(SchoolEntry entry in SchoolEntry.allSchools)
             {
-                allEntries.Add(entry);
+                if(entry.schoolScope == schoolname)
+                {
+                    entryCheck = entry;
+                }
             }
+            return entryCheck;
+        }
+        public static ContactEntry GetContact(string contact_name)
+        {
+            ContactEntry contactCheck = null;
+            foreach(ContactEntry entry in currentSchool.schoolContacts)
+            {
+                if(entry.contactName == contact_name)
+                {
+                    contactCheck = entry;
+                }
+            }
+            return contactCheck;
+        }
+        public static void breakpoint()
+        {
+
         }
     }
 }

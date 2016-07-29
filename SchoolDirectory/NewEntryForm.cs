@@ -13,6 +13,8 @@ namespace SchoolDirectory
 {
     public partial class NewEntryForm : Form
     {
+        private SchoolEntry selectedSchool;
+
         public NewEntryForm()
         {
             InitializeComponent();
@@ -26,10 +28,7 @@ namespace SchoolDirectory
             {
                 groupList.Visible = true;
                 groupLabel.Visible = true;
-                for(var i = 0; i <= SchoolEntry.allSchools.Count; i++)
-                {
-                    groupList.Items[i] = SchoolEntry.allSchools[i];
-                }
+                
 
 
             }
@@ -46,17 +45,32 @@ namespace SchoolDirectory
             {
                 ContactEntry newContact = new ContactEntry();
                 newContact.contactName = nameField.Text;
-                newContact.contactSchool = SchoolEntry.allSchools[groupList.SelectedIndex];
+                //newContact.contactSchool = SchoolEntry.allSchools[groupList.SelectedIndex];
+                newContact.contactSchool = AppController.GetSchool(groupList.SelectedItem.ToString());
                 newContact.contactSchool.schoolContacts.Add(newContact);
+                ContactEntry.allEntries.Add(newContact);
+                ContactEntry.currentContact = newContact;
+
             }
             else
             {
                 SchoolEntry newSchool = new SchoolEntry();
                 newSchool.schoolScope = nameField.Text;
                 SchoolEntry.allSchools.Add(newSchool);
+                if(SchoolEntry.currentEntry == null)
+                {
+                    SchoolEntry.currentEntry = newSchool;
+                }
+                
+
             }
             MainWindow.Form.formRefresh();
             NewEntryForm.ActiveForm.Close();
+        }
+
+        private void groupList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.WrapperTable = new System.Windows.Forms.TableLayoutPanel();
             this.MainWindowToolstrip = new System.Windows.Forms.ToolStrip();
+            this.refreshButton = new System.Windows.Forms.ToolStripButton();
             this.saveButton = new System.Windows.Forms.ToolStripButton();
             this.deleteButton = new System.Windows.Forms.ToolStripButton();
             this.RecordStatusStrip = new System.Windows.Forms.StatusStrip();
@@ -39,7 +40,6 @@
             this.currentGroupName = new System.Windows.Forms.ToolStripStatusLabel();
             this.lastUpdatedDateTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.MainWindowTable = new System.Windows.Forms.TableLayoutPanel();
-            this.RecordList = new System.Windows.Forms.ListBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.phoneField2 = new System.Windows.Forms.TextBox();
@@ -55,13 +55,14 @@
             this.nameLabel = new System.Windows.Forms.Label();
             this.noteGroupBox = new System.Windows.Forms.GroupBox();
             this.contactNoteBox = new System.Windows.Forms.RichTextBox();
-            this.GroupList = new System.Windows.Forms.ListBox();
-            this.newGroupButton = new System.Windows.Forms.Button();
-            this.newRecordButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.schoolNotebox = new System.Windows.Forms.RichTextBox();
-            this.refreshButton = new System.Windows.Forms.ToolStripButton();
+            this.RecordList = new System.Windows.Forms.ListBox();
+            this.contactEntryBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.GroupList = new System.Windows.Forms.ListBox();
             this.schoolEntryBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.newGroupButton = new System.Windows.Forms.Button();
+            this.newRecordButton = new System.Windows.Forms.Button();
             this.WrapperTable.SuspendLayout();
             this.MainWindowToolstrip.SuspendLayout();
             this.RecordStatusStrip.SuspendLayout();
@@ -73,6 +74,7 @@
             this.tableLayoutPanel2.SuspendLayout();
             this.noteGroupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.contactEntryBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.schoolEntryBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -107,6 +109,17 @@
             this.MainWindowToolstrip.TabIndex = 0;
             this.MainWindowToolstrip.Text = "toolStrip1";
             // 
+            // refreshButton
+            // 
+            this.refreshButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.refreshButton.Image = ((System.Drawing.Image)(resources.GetObject("refreshButton.Image")));
+            this.refreshButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.refreshButton.Name = "refreshButton";
+            this.refreshButton.Size = new System.Drawing.Size(23, 18);
+            this.refreshButton.Text = "toolStripButton1";
+            this.refreshButton.ToolTipText = "Refresh";
+            this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
+            // 
             // saveButton
             // 
             this.saveButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -115,6 +128,8 @@
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(23, 18);
             this.saveButton.Text = "toolStripButton1";
+            this.saveButton.ToolTipText = "Save";
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // deleteButton
             // 
@@ -124,6 +139,8 @@
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(23, 18);
             this.deleteButton.Text = "toolStripButton1";
+            this.deleteButton.ToolTipText = "Delete";
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // RecordStatusStrip
             // 
@@ -176,15 +193,6 @@
             this.MainWindowTable.Size = new System.Drawing.Size(586, 241);
             this.MainWindowTable.TabIndex = 2;
             // 
-            // RecordList
-            // 
-            this.RecordList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.RecordList.FormattingEnabled = true;
-            this.RecordList.Location = new System.Drawing.Point(89, 3);
-            this.RecordList.Name = "RecordList";
-            this.RecordList.Size = new System.Drawing.Size(87, 205);
-            this.RecordList.TabIndex = 1;
-            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
@@ -228,6 +236,7 @@
             this.phoneField2.Name = "phoneField2";
             this.phoneField2.Size = new System.Drawing.Size(92, 20);
             this.phoneField2.TabIndex = 0;
+            this.phoneField2.Text = "Phone2";
             // 
             // phoneLabel2
             // 
@@ -260,6 +269,7 @@
             this.phoneField1.Name = "phoneField1";
             this.phoneField1.Size = new System.Drawing.Size(91, 20);
             this.phoneField1.TabIndex = 0;
+            this.phoneField1.Text = "Phone1";
             // 
             // phoneLabel1
             // 
@@ -293,6 +303,7 @@
             this.emailField.Name = "emailField";
             this.emailField.Size = new System.Drawing.Size(92, 20);
             this.emailField.TabIndex = 0;
+            this.emailField.Text = "Contact Email";
             // 
             // emailLabel
             // 
@@ -325,6 +336,7 @@
             this.nameField.Name = "nameField";
             this.nameField.Size = new System.Drawing.Size(91, 20);
             this.nameField.TabIndex = 0;
+            this.nameField.Text = "Contact Name";
             // 
             // nameLabel
             // 
@@ -354,7 +366,41 @@
             this.contactNoteBox.Name = "contactNoteBox";
             this.contactNoteBox.Size = new System.Drawing.Size(189, 121);
             this.contactNoteBox.TabIndex = 4;
-            this.contactNoteBox.Text = "";
+            this.contactNoteBox.Text = "Contact Notes";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.schoolNotebox);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(3, 62);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(194, 140);
+            this.groupBox1.TabIndex = 10;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "School Notes";
+            // 
+            // schoolNotebox
+            // 
+            this.schoolNotebox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.schoolNotebox.Location = new System.Drawing.Point(3, 16);
+            this.schoolNotebox.Name = "schoolNotebox";
+            this.schoolNotebox.Size = new System.Drawing.Size(188, 121);
+            this.schoolNotebox.TabIndex = 5;
+            this.schoolNotebox.Text = "School Notes";
+            // 
+            // RecordList
+            // 
+            this.RecordList.DataSource = this.contactEntryBindingSource;
+            this.RecordList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.RecordList.FormattingEnabled = true;
+            this.RecordList.Location = new System.Drawing.Point(89, 3);
+            this.RecordList.Name = "RecordList";
+            this.RecordList.Size = new System.Drawing.Size(87, 205);
+            this.RecordList.TabIndex = 1;
+            // 
+            // contactEntryBindingSource
+            // 
+            this.contactEntryBindingSource.DataSource = typeof(SchoolClasses.ContactEntry);
             // 
             // GroupList
             // 
@@ -366,6 +412,10 @@
             this.GroupList.Size = new System.Drawing.Size(80, 205);
             this.GroupList.TabIndex = 0;
             this.GroupList.SelectedIndexChanged += new System.EventHandler(this.GroupList_SelectedIndexChanged);
+            // 
+            // schoolEntryBindingSource
+            // 
+            this.schoolEntryBindingSource.DataSource = typeof(SchoolClasses.SchoolEntry);
             // 
             // newGroupButton
             // 
@@ -388,40 +438,6 @@
             this.newRecordButton.Text = "New Record";
             this.newRecordButton.UseVisualStyleBackColor = true;
             this.newRecordButton.Click += new System.EventHandler(this.newRecordButton_Click);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.schoolNotebox);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(3, 62);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(194, 140);
-            this.groupBox1.TabIndex = 10;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "School Notes";
-            // 
-            // schoolNotebox
-            // 
-            this.schoolNotebox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.schoolNotebox.Location = new System.Drawing.Point(3, 16);
-            this.schoolNotebox.Name = "schoolNotebox";
-            this.schoolNotebox.Size = new System.Drawing.Size(188, 121);
-            this.schoolNotebox.TabIndex = 5;
-            this.schoolNotebox.Text = "";
-            // 
-            // refreshButton
-            // 
-            this.refreshButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.refreshButton.Image = ((System.Drawing.Image)(resources.GetObject("refreshButton.Image")));
-            this.refreshButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.refreshButton.Name = "refreshButton";
-            this.refreshButton.Size = new System.Drawing.Size(23, 18);
-            this.refreshButton.Text = "toolStripButton1";
-            this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
-            // 
-            // schoolEntryBindingSource
-            // 
-            this.schoolEntryBindingSource.DataSource = typeof(SchoolClasses.SchoolEntry);
             // 
             // MainWindow
             // 
@@ -449,6 +465,7 @@
             this.tableLayoutPanel2.PerformLayout();
             this.noteGroupBox.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.contactEntryBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.schoolEntryBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -488,6 +505,7 @@
         private System.Windows.Forms.RichTextBox schoolNotebox;
         private System.Windows.Forms.ToolStripButton refreshButton;
         private System.Windows.Forms.BindingSource schoolEntryBindingSource;
+        private System.Windows.Forms.BindingSource contactEntryBindingSource;
     }
 }
 
