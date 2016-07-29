@@ -4,25 +4,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace SchoolClasses
 {
     public class SchoolEntry : ISaveable
     {
-        public static List<SchoolEntry> allSchools;
-        public List<ContactEntry> schoolContacts;
-        public string schoolName;
-        public string schoolScope;
-        public string schoolNotes;
+        public static List<SchoolEntry> allSchools = new List<SchoolEntry>();
+        public static SchoolEntry currentEntry;
+        public List<ContactEntry> schoolContacts = new List<ContactEntry>();
+        public string schoolScope = "";
+        public string schoolNotes = "";
 
-        void ISaveable.Save(){
-            
-            }
+        void ISaveable.Save() {
+
+        }
         void ISaveable.Load()
         {
 
         }
-    }
 
+    }
+    
     public class ContactEntry: ISaveable
     {
         public string contactName;
@@ -30,6 +32,7 @@ namespace SchoolClasses
         public List<string> contactPhoneList;
         public string contactEmail;
         public string contactNotes;
+        public SchoolEntry contactSchool;
 
 
         void ISaveable.Save()
@@ -46,6 +49,12 @@ namespace SchoolClasses
     {
         void Save();
         void Load();
+    }
+
+    public class EntryBuilder
+    {
+        public enum modeEnum {Group, Contact};
+        public static modeEnum mode;
     }
 
     public class AppController
