@@ -90,7 +90,7 @@ namespace SchoolClasses
 
         public static void loadRecords()
         {
-            SchoolEntry.allSchools = new List<SchoolEntry>();
+            //SchoolEntry.allSchools = new List<SchoolEntry>();
             if (File.Exists(Path))
             {
                 Stream readStream = File.OpenRead(Path);
