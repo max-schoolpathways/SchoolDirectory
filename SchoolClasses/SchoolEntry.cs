@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace SchoolClasses
 {
+    [Serializable()]
     public class SchoolEntry : ISaveable
     {
         public static List<SchoolEntry> allSchools = new List<SchoolEntry>();
@@ -26,7 +27,7 @@ namespace SchoolClasses
         }
 
     }
-    
+    [Serializable()]
     public class ContactEntry: ISaveable
     {
         public static List<ContactEntry> allEntries = new List<ContactEntry>();
@@ -72,6 +73,8 @@ namespace SchoolClasses
 
         public static void saveAll()
         {
+            //someday, make this check through a list of objects which implement ISaveable
+            //and call their Save methods
             foreach(SchoolEntry entry in SchoolEntry.allSchools)
             {
                 entry.Save();
@@ -83,7 +86,10 @@ namespace SchoolClasses
                 entry.Load();
             }
         }
+        public static void saveRecord(ContactEntry contact, SchoolEntry school)
+        {
 
+        }
         
         public static SchoolEntry GetSchool(string schoolname)
         {
@@ -100,7 +106,7 @@ namespace SchoolClasses
         public static ContactEntry GetContact(string contact_name)
         {
             ContactEntry contactCheck = null;
-            foreach(ContactEntry entry in currentSchool.schoolContacts)
+            foreach(ContactEntry entry in SchoolEntry.currentEntry.schoolContacts)
             {
                 if(entry.contactName == contact_name)
                 {

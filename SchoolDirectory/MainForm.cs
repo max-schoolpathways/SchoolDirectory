@@ -23,7 +23,6 @@ namespace SchoolDirectory
             InitializeComponent();
             Form = this;
             schoolSource.DataSource = SchoolEntry.allSchools;
-            //contactSource.DataSource = SchoolEntry.currentEntry.schoolContacts;
             GroupList.DataSource = schoolSource;
             RecordList.DataSource = contactSource;
         }
@@ -33,12 +32,6 @@ namespace SchoolDirectory
             
             SchoolEntry.currentEntry = AppController.GetSchool(GroupList.SelectedItem.ToString());
             formRefresh();
-            /*
-            for(var i = 0;i < SchoolEntry.currentEntry.schoolContacts.Count(); i++)
-            {
-                RecordList.Items[i] = SchoolEntry.currentEntry.schoolContacts[i].contactName;
-            }
-            */
         }
 
         private void newGroupButton_Click(object sender, EventArgs e)
@@ -48,8 +41,6 @@ namespace SchoolDirectory
         }
         public void formRefresh()
         {
-           // GroupList.Items.Clear();
-            //RecordList.Items.Clear();
             
             schoolNames.Clear();
             contactNames.Clear();
@@ -71,9 +62,22 @@ namespace SchoolDirectory
                 contactSource.DataSource = contactNames;
                 RecordList.DataSource = contactSource;
                 contactSource.ResetBindings(false);
+
+
+
             }
             
             
+        }
+
+        void loadFields(ContactEntry contact)
+        {
+            phoneField1.Text = contact.contactPhone1;
+            phoneField2.Text = contact.contactPhone2;
+            nameField.Text = contact.contactName;
+            emailField.Text = contact.contactEmail;
+            schoolNotebox.Text = contact.contactSchool.schoolNotes;
+            contactNoteBox.Text = contact.contactNotes;
         }
 
         private void refreshButton_Click(object sender, EventArgs e)
@@ -89,8 +93,6 @@ namespace SchoolDirectory
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            //AppController.saveAll();
-            //SchoolEntry.currentEntry.schoolNotes = schoolNotebox.Text;
             saveRecord();
         }
         void saveRecord()
@@ -103,10 +105,33 @@ namespace SchoolDirectory
             ContactEntry.currentContact.contactPhone1 = phoneField1.Text;
             ContactEntry.currentContact.contactPhone2 = phoneField2.Text;
         }
+        void loadRecord()
+        {
 
+        }
         private void deleteButton_Click(object sender, EventArgs e)
         {
             AppController.breakpoint();
+        }
+
+        private void contactSavebutton_Click(object sender, EventArgs e)
+        {
+            SchoolEntry.currentEntry.schoolNotes = schoolNotebox.Text;
+            ContactEntry.currentContact.contactName = nameField.Text;
+            ContactEntry.currentContact.contactEmail = emailField.Text;
+            ContactEntry.currentContact.contactPhone1 = phoneField1.Text;
+            ContactEntry.currentContact.contactPhone2 = phoneField2.Text;
+            ContactEntry.currentContact.contactNotes = contactNoteBox.Text;
+
+
+            AppController.saveRecord(ContactEntry.currentContact, SchoolEntry.currentEntry);
+        }
+
+        private void RecordList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ContactEntry.currentContact = AppController.GetContact(RecordList.SelectedItem.ToString());
+            formRefresh();
+            loadFields(ContactEntry.currentContact);
         }
     }
 }

@@ -63,6 +63,7 @@
             this.schoolEntryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.newGroupButton = new System.Windows.Forms.Button();
             this.newRecordButton = new System.Windows.Forms.Button();
+            this.contactSavebutton = new System.Windows.Forms.Button();
             this.WrapperTable.SuspendLayout();
             this.MainWindowToolstrip.SuspendLayout();
             this.RecordStatusStrip.SuspendLayout();
@@ -179,12 +180,13 @@
             this.MainWindowTable.ColumnCount = 3;
             this.MainWindowTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 86F));
             this.MainWindowTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 93F));
-            this.MainWindowTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 248F));
+            this.MainWindowTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 407F));
             this.MainWindowTable.Controls.Add(this.tableLayoutPanel1, 2, 0);
             this.MainWindowTable.Controls.Add(this.RecordList, 1, 0);
             this.MainWindowTable.Controls.Add(this.GroupList, 0, 0);
             this.MainWindowTable.Controls.Add(this.newGroupButton, 0, 1);
             this.MainWindowTable.Controls.Add(this.newRecordButton, 1, 1);
+            this.MainWindowTable.Controls.Add(this.contactSavebutton, 2, 1);
             this.MainWindowTable.Location = new System.Drawing.Point(3, 24);
             this.MainWindowTable.Name = "MainWindowTable";
             this.MainWindowTable.RowCount = 2;
@@ -397,6 +399,7 @@
             this.RecordList.Name = "RecordList";
             this.RecordList.Size = new System.Drawing.Size(87, 205);
             this.RecordList.TabIndex = 1;
+            this.RecordList.SelectedIndexChanged += new System.EventHandler(this.RecordList_SelectedIndexChanged);
             // 
             // contactEntryBindingSource
             // 
@@ -439,6 +442,18 @@
             this.newRecordButton.UseVisualStyleBackColor = true;
             this.newRecordButton.Click += new System.EventHandler(this.newRecordButton_Click);
             // 
+            // contactSavebutton
+            // 
+            this.contactSavebutton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.contactSavebutton.AutoSize = true;
+            this.contactSavebutton.Location = new System.Drawing.Point(503, 214);
+            this.contactSavebutton.Name = "contactSavebutton";
+            this.contactSavebutton.Size = new System.Drawing.Size(80, 23);
+            this.contactSavebutton.TabIndex = 5;
+            this.contactSavebutton.Text = "Save Record";
+            this.contactSavebutton.UseVisualStyleBackColor = true;
+            this.contactSavebutton.Click += new System.EventHandler(this.contactSavebutton_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -454,6 +469,7 @@
             this.RecordStatusStrip.ResumeLayout(false);
             this.RecordStatusStrip.PerformLayout();
             this.MainWindowTable.ResumeLayout(false);
+            this.MainWindowTable.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
@@ -506,6 +522,7 @@
         private System.Windows.Forms.ToolStripButton refreshButton;
         private System.Windows.Forms.BindingSource schoolEntryBindingSource;
         private System.Windows.Forms.BindingSource contactEntryBindingSource;
+        private System.Windows.Forms.Button contactSavebutton;
     }
 }
 
