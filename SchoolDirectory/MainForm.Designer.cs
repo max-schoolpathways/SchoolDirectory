@@ -36,9 +36,7 @@
             this.saveButton = new System.Windows.Forms.ToolStripButton();
             this.deleteButton = new System.Windows.Forms.ToolStripButton();
             this.RecordStatusStrip = new System.Windows.Forms.StatusStrip();
-            this.currentRecordName = new System.Windows.Forms.ToolStripStatusLabel();
-            this.currentGroupName = new System.Windows.Forms.ToolStripStatusLabel();
-            this.lastUpdatedDateTime = new System.Windows.Forms.ToolStripStatusLabel();
+            this.currentRecordDetails = new System.Windows.Forms.ToolStripStatusLabel();
             this.MainWindowTable = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
@@ -69,9 +67,9 @@
             this.schoolEntryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.newGroupButton = new System.Windows.Forms.Button();
             this.newRecordButton = new System.Windows.Forms.Button();
-            this.contactSavebutton = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.contactDeleteButton = new System.Windows.Forms.Button();
+            this.contactSavebutton = new System.Windows.Forms.Button();
             this.WrapperTable.SuspendLayout();
             this.MainWindowToolstrip.SuspendLayout();
             this.RecordStatusStrip.SuspendLayout();
@@ -158,32 +156,18 @@
             // 
             this.RecordStatusStrip.Dock = System.Windows.Forms.DockStyle.Fill;
             this.RecordStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.currentRecordName,
-            this.currentGroupName,
-            this.lastUpdatedDateTime});
+            this.currentRecordDetails});
             this.RecordStatusStrip.Location = new System.Drawing.Point(0, 283);
             this.RecordStatusStrip.Name = "RecordStatusStrip";
             this.RecordStatusStrip.Size = new System.Drawing.Size(592, 33);
             this.RecordStatusStrip.TabIndex = 1;
             this.RecordStatusStrip.Text = "statusStrip1";
             // 
-            // currentRecordName
+            // currentRecordDetails
             // 
-            this.currentRecordName.Name = "currentRecordName";
-            this.currentRecordName.Size = new System.Drawing.Size(114, 28);
-            this.currentRecordName.Text = "currentRecordName";
-            // 
-            // currentGroupName
-            // 
-            this.currentGroupName.Name = "currentGroupName";
-            this.currentGroupName.Size = new System.Drawing.Size(124, 28);
-            this.currentGroupName.Text = "@ currentGroupName";
-            // 
-            // lastUpdatedDateTime
-            // 
-            this.lastUpdatedDateTime.Name = "lastUpdatedDateTime";
-            this.lastUpdatedDateTime.Size = new System.Drawing.Size(193, 28);
-            this.lastUpdatedDateTime.Text = "Last Updated lastUpdatedDateTime";
+            this.currentRecordDetails.Name = "currentRecordDetails";
+            this.currentRecordDetails.Size = new System.Drawing.Size(117, 28);
+            this.currentRecordDetails.Text = "currentRecordDetails";
             // 
             // MainWindowTable
             // 
@@ -524,18 +508,6 @@
             this.newRecordButton.UseVisualStyleBackColor = true;
             this.newRecordButton.Click += new System.EventHandler(this.newRecordButton_Click);
             // 
-            // contactSavebutton
-            // 
-            this.contactSavebutton.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.contactSavebutton.AutoSize = true;
-            this.contactSavebutton.Location = new System.Drawing.Point(232, 3);
-            this.contactSavebutton.Name = "contactSavebutton";
-            this.contactSavebutton.Size = new System.Drawing.Size(80, 23);
-            this.contactSavebutton.TabIndex = 5;
-            this.contactSavebutton.Text = "Save Record";
-            this.contactSavebutton.UseVisualStyleBackColor = true;
-            this.contactSavebutton.Click += new System.EventHandler(this.contactSavebutton_Click);
-            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.contactDeleteButton);
@@ -560,6 +532,18 @@
             this.contactDeleteButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.contactDeleteButton.UseVisualStyleBackColor = true;
             this.contactDeleteButton.Click += new System.EventHandler(this.contactDeleteButton_Click);
+            // 
+            // contactSavebutton
+            // 
+            this.contactSavebutton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.contactSavebutton.AutoSize = true;
+            this.contactSavebutton.Location = new System.Drawing.Point(232, 3);
+            this.contactSavebutton.Name = "contactSavebutton";
+            this.contactSavebutton.Size = new System.Drawing.Size(80, 23);
+            this.contactSavebutton.TabIndex = 5;
+            this.contactSavebutton.Text = "Save Record";
+            this.contactSavebutton.UseVisualStyleBackColor = true;
+            this.contactSavebutton.Click += new System.EventHandler(this.contactSavebutton_Click);
             // 
             // MainWindow
             // 
@@ -624,9 +608,7 @@
         private System.Windows.Forms.TextBox nameField;
         private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.GroupBox noteGroupBox;
-        private System.Windows.Forms.ToolStripStatusLabel currentRecordName;
-        private System.Windows.Forms.ToolStripStatusLabel currentGroupName;
-        private System.Windows.Forms.ToolStripStatusLabel lastUpdatedDateTime;
+        private System.Windows.Forms.ToolStripStatusLabel currentRecordDetails;
         private System.Windows.Forms.ListBox GroupList;
         private System.Windows.Forms.Button newGroupButton;
         private System.Windows.Forms.Button newRecordButton;

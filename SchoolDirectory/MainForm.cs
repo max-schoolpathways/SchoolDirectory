@@ -29,6 +29,8 @@ namespace SchoolDirectory
         {
             
             SchoolEntry.currentEntry = AppController.GetSchool(GroupList.SelectedItem.ToString());
+            //ContactEntry.currentContact = SchoolEntry.currentEntry.schoolContacts[0];
+            RecordList.ClearSelected();
             formRefresh();
         }
 
@@ -64,20 +66,23 @@ namespace SchoolDirectory
                 RecordList.DataSource = contactSource;
                 contactSource.ResetBindings(true);
             }
-            
+            updateStatusLabel();
             
         }
 
         void loadFields(ContactEntry contact)
         {
-            phoneField1.Text = contact.contactPhone1;
-            phoneField2.Text = contact.contactPhone2;
-            loginField.Text = contact.contactLogin;
-            positionField.Text = contact.contactPosition;
-            nameField.Text = contact.contactName;
-            emailField.Text = contact.contactEmail;
-            schoolNotebox.Text = contact.contactSchool.schoolNotes;
-            contactNoteBox.Text = contact.contactNotes;
+            if (contact != null)
+            {
+                phoneField1.Text = contact.contactPhone1;
+                phoneField2.Text = contact.contactPhone2;
+                loginField.Text = contact.contactLogin;
+                positionField.Text = contact.contactPosition;
+                nameField.Text = contact.contactName;
+                emailField.Text = contact.contactEmail;
+                schoolNotebox.Text = contact.contactSchool.schoolNotes;
+                contactNoteBox.Text = contact.contactNotes;
+            }
         }
 
         private void refreshButton_Click(object sender, EventArgs e)
@@ -125,7 +130,10 @@ namespace SchoolDirectory
 
         private void RecordList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ContactEntry.currentContact = AppController.GetContact(RecordList.SelectedItem.ToString());
+            if(RecordList.SelectedItem != null && RecordList.SelectedItem.ToString() != "")
+            {
+                ContactEntry.currentContact = AppController.GetContact(RecordList.SelectedItem.ToString());
+            }
             formRefresh();
             loadFields(ContactEntry.currentContact);
         }
@@ -139,7 +147,14 @@ namespace SchoolDirectory
             formRefresh();
             formRefresh();
         }
-
+        private void updateStatusLabel()
+        {
+            if (ContactEntry.currentContact != null)
+            {
+                ContactEntry contact = ContactEntry.currentContact;
+                currentRecordDetails.Text = contact.contactLogin + ", " + contact.contactPosition + " @ " + contact.contactSchool.schoolScope;
+            }
+        }
         private void MainWindowTable_Paint(object sender, PaintEventArgs e)
         {
 
