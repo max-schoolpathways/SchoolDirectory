@@ -64,6 +64,12 @@
             this.newGroupButton = new System.Windows.Forms.Button();
             this.newRecordButton = new System.Windows.Forms.Button();
             this.contactSavebutton = new System.Windows.Forms.Button();
+            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.loginLabel = new System.Windows.Forms.Label();
+            this.positionLabel = new System.Windows.Forms.Label();
+            this.loginField = new System.Windows.Forms.TextBox();
+            this.positionField = new System.Windows.Forms.TextBox();
             this.WrapperTable.SuspendLayout();
             this.MainWindowToolstrip.SuspendLayout();
             this.RecordStatusStrip.SuspendLayout();
@@ -77,6 +83,8 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.contactEntryBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.schoolEntryBindingSource)).BeginInit();
+            this.tableLayoutPanel6.SuspendLayout();
+            this.tableLayoutPanel7.SuspendLayout();
             this.SuspendLayout();
             // 
             // WrapperTable
@@ -200,20 +208,22 @@
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel5, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel7, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel5, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.noteGroupBox, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.groupBox1, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.noteGroupBox, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.groupBox1, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel6, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(182, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 107F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 91F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(401, 205);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
@@ -224,7 +234,7 @@
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.Controls.Add(this.phoneField2, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.phoneLabel2, 0, 0);
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(203, 33);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(203, 66);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -257,7 +267,7 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.Controls.Add(this.phoneField1, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.phoneLabel1, 0, 0);
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 33);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 66);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -354,9 +364,9 @@
             // 
             this.noteGroupBox.Controls.Add(this.contactNoteBox);
             this.noteGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.noteGroupBox.Location = new System.Drawing.Point(203, 62);
+            this.noteGroupBox.Location = new System.Drawing.Point(203, 98);
             this.noteGroupBox.Name = "noteGroupBox";
-            this.noteGroupBox.Size = new System.Drawing.Size(195, 140);
+            this.noteGroupBox.Size = new System.Drawing.Size(195, 104);
             this.noteGroupBox.TabIndex = 9;
             this.noteGroupBox.TabStop = false;
             this.noteGroupBox.Text = "Contact Notes";
@@ -366,7 +376,7 @@
             this.contactNoteBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.contactNoteBox.Location = new System.Drawing.Point(3, 16);
             this.contactNoteBox.Name = "contactNoteBox";
-            this.contactNoteBox.Size = new System.Drawing.Size(189, 121);
+            this.contactNoteBox.Size = new System.Drawing.Size(189, 85);
             this.contactNoteBox.TabIndex = 4;
             this.contactNoteBox.Text = "Contact Notes";
             // 
@@ -374,9 +384,9 @@
             // 
             this.groupBox1.Controls.Add(this.schoolNotebox);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(3, 62);
+            this.groupBox1.Location = new System.Drawing.Point(3, 98);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(194, 140);
+            this.groupBox1.Size = new System.Drawing.Size(194, 104);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "School Notes";
@@ -386,7 +396,7 @@
             this.schoolNotebox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.schoolNotebox.Location = new System.Drawing.Point(3, 16);
             this.schoolNotebox.Name = "schoolNotebox";
-            this.schoolNotebox.Size = new System.Drawing.Size(188, 121);
+            this.schoolNotebox.Size = new System.Drawing.Size(188, 85);
             this.schoolNotebox.TabIndex = 5;
             this.schoolNotebox.Text = "School Notes";
             // 
@@ -454,6 +464,74 @@
             this.contactSavebutton.UseVisualStyleBackColor = true;
             this.contactSavebutton.Click += new System.EventHandler(this.contactSavebutton_Click);
             // 
+            // tableLayoutPanel6
+            // 
+            this.tableLayoutPanel6.ColumnCount = 2;
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.Controls.Add(this.loginField, 1, 0);
+            this.tableLayoutPanel6.Controls.Add(this.loginLabel, 0, 0);
+            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 33);
+            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
+            this.tableLayoutPanel6.RowCount = 1;
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(194, 27);
+            this.tableLayoutPanel6.TabIndex = 11;
+            // 
+            // tableLayoutPanel7
+            // 
+            this.tableLayoutPanel7.ColumnCount = 2;
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.Controls.Add(this.positionField, 0, 0);
+            this.tableLayoutPanel7.Controls.Add(this.positionLabel, 0, 0);
+            this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(203, 33);
+            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
+            this.tableLayoutPanel7.RowCount = 1;
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(195, 27);
+            this.tableLayoutPanel7.TabIndex = 12;
+            // 
+            // loginLabel
+            // 
+            this.loginLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.loginLabel.AutoSize = true;
+            this.loginLabel.Location = new System.Drawing.Point(61, 7);
+            this.loginLabel.Name = "loginLabel";
+            this.loginLabel.Size = new System.Drawing.Size(33, 13);
+            this.loginLabel.TabIndex = 0;
+            this.loginLabel.Text = "Login";
+            // 
+            // positionLabel
+            // 
+            this.positionLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.positionLabel.AutoSize = true;
+            this.positionLabel.Location = new System.Drawing.Point(50, 7);
+            this.positionLabel.Name = "positionLabel";
+            this.positionLabel.Size = new System.Drawing.Size(44, 13);
+            this.positionLabel.TabIndex = 1;
+            this.positionLabel.Text = "Position";
+            // 
+            // loginField
+            // 
+            this.loginField.Dock = System.Windows.Forms.DockStyle.Right;
+            this.loginField.Location = new System.Drawing.Point(100, 3);
+            this.loginField.Name = "loginField";
+            this.loginField.Size = new System.Drawing.Size(91, 20);
+            this.loginField.TabIndex = 1;
+            this.loginField.Text = "Login";
+            // 
+            // positionField
+            // 
+            this.positionField.Dock = System.Windows.Forms.DockStyle.Right;
+            this.positionField.Location = new System.Drawing.Point(101, 3);
+            this.positionField.Name = "positionField";
+            this.positionField.Size = new System.Drawing.Size(91, 20);
+            this.positionField.TabIndex = 2;
+            this.positionField.Text = "Position";
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -483,6 +561,10 @@
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.contactEntryBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.schoolEntryBindingSource)).EndInit();
+            this.tableLayoutPanel6.ResumeLayout(false);
+            this.tableLayoutPanel6.PerformLayout();
+            this.tableLayoutPanel7.ResumeLayout(false);
+            this.tableLayoutPanel7.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -523,6 +605,12 @@
         private System.Windows.Forms.BindingSource schoolEntryBindingSource;
         private System.Windows.Forms.BindingSource contactEntryBindingSource;
         private System.Windows.Forms.Button contactSavebutton;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
+        private System.Windows.Forms.TextBox positionField;
+        private System.Windows.Forms.Label positionLabel;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
+        private System.Windows.Forms.TextBox loginField;
+        private System.Windows.Forms.Label loginLabel;
     }
 }
 

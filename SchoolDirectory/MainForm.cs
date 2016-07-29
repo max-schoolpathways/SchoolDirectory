@@ -22,6 +22,7 @@ namespace SchoolDirectory
         {
             InitializeComponent();
             Form = this;
+            AppController.loadRecords();
             schoolSource.DataSource = SchoolEntry.allSchools;
             GroupList.DataSource = schoolSource;
             RecordList.DataSource = contactSource;
@@ -41,7 +42,10 @@ namespace SchoolDirectory
         }
         public void formRefresh()
         {
-            
+            //AppController.saveRecords();
+           // AppController.loadRecords();
+            //Old refresh method
+             
             schoolNames.Clear();
             contactNames.Clear();
 
@@ -57,7 +61,7 @@ namespace SchoolDirectory
             {
                 foreach(ContactEntry contact in SchoolEntry.currentEntry.schoolContacts)
                 {
-                    contactNames.Add(contact.contactName);
+                    contactNames.Add(contact.contactLogin);
                 }
                 contactSource.DataSource = contactNames;
                 RecordList.DataSource = contactSource;
@@ -74,6 +78,8 @@ namespace SchoolDirectory
         {
             phoneField1.Text = contact.contactPhone1;
             phoneField2.Text = contact.contactPhone2;
+            loginField.Text = contact.contactLogin;
+            positionField.Text = contact.contactPosition;
             nameField.Text = contact.contactName;
             emailField.Text = contact.contactEmail;
             schoolNotebox.Text = contact.contactSchool.schoolNotes;
@@ -101,9 +107,12 @@ namespace SchoolDirectory
 
             ContactEntry.currentContact.contactEmail = emailField.Text;
             ContactEntry.currentContact.contactName = nameField.Text;
+            ContactEntry.currentContact.contactLogin = loginField.Text;
+            ContactEntry.currentContact.contactPosition = positionField.Text;
             ContactEntry.currentContact.contactNotes = contactNoteBox.Text;
             ContactEntry.currentContact.contactPhone1 = phoneField1.Text;
             ContactEntry.currentContact.contactPhone2 = phoneField2.Text;
+
         }
         void loadRecord()
         {
@@ -124,7 +133,7 @@ namespace SchoolDirectory
             ContactEntry.currentContact.contactNotes = contactNoteBox.Text;
 
 
-            AppController.saveRecord(ContactEntry.currentContact, SchoolEntry.currentEntry);
+            AppController.saveRecords();
         }
 
         private void RecordList_SelectedIndexChanged(object sender, EventArgs e)

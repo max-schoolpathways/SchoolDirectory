@@ -13,7 +13,6 @@ namespace SchoolDirectory
 {
     public partial class NewEntryForm : Form
     {
-        private SchoolEntry selectedSchool;
 
         public NewEntryForm()
         {
@@ -28,9 +27,6 @@ namespace SchoolDirectory
             {
                 groupList.Visible = true;
                 groupLabel.Visible = true;
-                
-
-
             }
             else
             {
@@ -43,9 +39,7 @@ namespace SchoolDirectory
         {
             if(EntryBuilder.mode == EntryBuilder.modeEnum.Contact)
             {
-                ContactEntry newContact = new ContactEntry();
-                newContact.contactName = nameField.Text;
-                //newContact.contactSchool = SchoolEntry.allSchools[groupList.SelectedIndex];
+                ContactEntry newContact = new ContactEntry(nameField.Text);
                 newContact.contactSchool = AppController.GetSchool(groupList.SelectedItem.ToString());
                 newContact.contactSchool.schoolContacts.Add(newContact);
                 ContactEntry.allEntries.Add(newContact);
@@ -54,8 +48,7 @@ namespace SchoolDirectory
             }
             else
             {
-                SchoolEntry newSchool = new SchoolEntry();
-                newSchool.schoolScope = nameField.Text;
+                SchoolEntry newSchool = new SchoolEntry(nameField.Text);
                 SchoolEntry.allSchools.Add(newSchool);
                 if(SchoolEntry.currentEntry == null)
                 {

@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 
 namespace SchoolClasses
 {
     [Serializable()]
-    public class SchoolEntry : ISaveable
+    public class SchoolEntry
     {
         public static List<SchoolEntry> allSchools = new List<SchoolEntry>();
         public static SchoolEntry currentEntry;
@@ -17,45 +19,46 @@ namespace SchoolClasses
         public string schoolNotes = "";
 
         
-
-        public void Save() {
-            
-        }
-        public void Load()
+        public SchoolEntry(string scope, string notes, List<ContactEntry> contacts)
         {
-
+            schoolScope = scope;
+            schoolNotes = notes;
+            schoolContacts = contacts;
         }
+        public SchoolEntry(string scope)
+        {
+            schoolScope = scope;
+        }
+
+       
 
     }
     [Serializable()]
-    public class ContactEntry: ISaveable
+    public class ContactEntry
     {
         public static List<ContactEntry> allEntries = new List<ContactEntry>();
         public static ContactEntry currentContact;
         public string contactName;
-        public string contactLoginName = "";
+        public string contactLogin = "";
         public string contactPhone1 = "";
         public string contactPhone2 = "";
         public string contactEmail = "";
         public string contactNotes = "";
+        public string contactPosition = "";
         public SchoolEntry contactSchool;
 
-
-        public void Save()
+        public ContactEntry(string name, string login, string position, string phone1, string phone2, string email, string notes, SchoolEntry school)
         {
-
+            contactName = name;
         }
-        public void Load()
+        public ContactEntry(string login)
         {
-
+            contactLogin = login;
         }
+        
     }
 
-    public interface ISaveable
-    {
-        void Save();
-        void Load();
-    }
+    
 
     public class EntryBuilder
     {
@@ -65,30 +68,36 @@ namespace SchoolClasses
 
     public class AppController
     {
-        public static List<ISaveable> allEntries;
-
-        public static ISaveable currentRecord; //deprecate
+        
         public static SchoolEntry currentSchool;
         public static ContactEntry currentContact;
 
-        public static void saveAll()
-        {
-            //someday, make this check through a list of objects which implement ISaveable
-            //and call their Save methods
-            foreach(SchoolEntry entry in SchoolEntry.allSchools)
-            {
-                entry.Save();
-                entry.Load();
-            }
-            foreach(ContactEntry entry in ContactEntry.allEntries)
-            {
-                entry.Save();
-                entry.Load();
-            }
-        }
-        public static void saveRecord(ContactEntry contact, SchoolEntry school)
-        {
+        
+        public static string directory = "C://Users//Public//SchoolDirectory";
+        public static string Path = directory + "//data.bin";
 
+
+        public static void saveRecords()
+        {
+            if (!Directory.Exists(directory)) {
+                Directory.CreateDirectory(directory);
+            }
+            Stream writeStream = File.Create(Path);
+            BinaryFormatter serializer = new BinaryFormatter();
+            serializer.Serialize(writeStream, SchoolEntry.allSchools);
+            writeStream.Close();
+        }
+
+        public static void loadRecords()
+        {
+            SchoolEntry.allSchools = new List<SchoolEntry>();
+            if (File.Exists(Path))
+            {
+                Stream readStream = File.OpenRead(Path);
+                BinaryFormatter deserializer = new BinaryFormatter();
+                SchoolEntry.allSchools = (List<SchoolEntry>)deserializer.Deserialize(readStream);
+                readStream.Close();
+            }
         }
         
         public static SchoolEntry GetSchool(string schoolname)
@@ -108,7 +117,7 @@ namespace SchoolClasses
             ContactEntry contactCheck = null;
             foreach(ContactEntry entry in SchoolEntry.currentEntry.schoolContacts)
             {
-                if(entry.contactName == contact_name)
+                if(entry.contactLogin == contact_name)
                 {
                     contactCheck = entry;
                 }
