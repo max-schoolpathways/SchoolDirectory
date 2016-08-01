@@ -153,7 +153,12 @@ namespace SchoolDirectory
             {
                 ContactEntry contact = ContactEntry.currentContact;
                 currentRecordDetails.Text = contact.contactName + "(" + contact.contactLogin + "), " + contact.contactPosition + " @ " + contact.contactSchool.schoolScope + ": " + contact.contactEmail + " " + contact.contactPhone1;
+                currentRecordDetails.Visible = true;
+            }else
+            {
+                currentRecordDetails.Text = "null";
             }
+
         }
         private void MainWindowTable_Paint(object sender, PaintEventArgs e)
         {
@@ -177,6 +182,11 @@ namespace SchoolDirectory
         private void emailLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start("mailto:" + emailField.Text);
+        }
+
+        private void currentRecordDetails_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(currentRecordDetails.Text);
         }
     }
 }

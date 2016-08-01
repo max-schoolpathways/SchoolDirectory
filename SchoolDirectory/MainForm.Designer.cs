@@ -50,6 +50,7 @@
             this.phoneLabel1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.emailField = new System.Windows.Forms.TextBox();
+            this.emailLabel = new System.Windows.Forms.LinkLabel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.nameField = new System.Windows.Forms.TextBox();
             this.nameLabel = new System.Windows.Forms.Label();
@@ -69,7 +70,6 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.contactDeleteButton = new System.Windows.Forms.Button();
             this.contactSavebutton = new System.Windows.Forms.Button();
-            this.emailLabel = new System.Windows.Forms.LinkLabel();
             this.WrapperTable.SuspendLayout();
             this.MainWindowToolstrip.SuspendLayout();
             this.RecordStatusStrip.SuspendLayout();
@@ -103,7 +103,7 @@
             this.WrapperTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 82.82442F));
             this.WrapperTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.30534F));
             this.WrapperTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.WrapperTable.Size = new System.Drawing.Size(592, 316);
+            this.WrapperTable.Size = new System.Drawing.Size(644, 316);
             this.WrapperTable.TabIndex = 1;
             // 
             // MainWindowToolstrip
@@ -115,7 +115,7 @@
             this.deleteButton});
             this.MainWindowToolstrip.Location = new System.Drawing.Point(0, 0);
             this.MainWindowToolstrip.Name = "MainWindowToolstrip";
-            this.MainWindowToolstrip.Size = new System.Drawing.Size(592, 22);
+            this.MainWindowToolstrip.Size = new System.Drawing.Size(644, 22);
             this.MainWindowToolstrip.TabIndex = 0;
             this.MainWindowToolstrip.Text = "toolStrip1";
             // 
@@ -159,7 +159,7 @@
             this.currentRecordDetails});
             this.RecordStatusStrip.Location = new System.Drawing.Point(0, 283);
             this.RecordStatusStrip.Name = "RecordStatusStrip";
-            this.RecordStatusStrip.Size = new System.Drawing.Size(592, 33);
+            this.RecordStatusStrip.Size = new System.Drawing.Size(644, 33);
             this.RecordStatusStrip.TabIndex = 1;
             this.RecordStatusStrip.Text = "statusStrip1";
             // 
@@ -168,6 +168,7 @@
             this.currentRecordDetails.Name = "currentRecordDetails";
             this.currentRecordDetails.Size = new System.Drawing.Size(117, 28);
             this.currentRecordDetails.Text = "currentRecordDetails";
+            this.currentRecordDetails.Click += new System.EventHandler(this.currentRecordDetails_Click);
             // 
             // MainWindowTable
             // 
@@ -187,7 +188,7 @@
             this.MainWindowTable.RowCount = 2;
             this.MainWindowTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.MainWindowTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.MainWindowTable.Size = new System.Drawing.Size(586, 255);
+            this.MainWindowTable.Size = new System.Drawing.Size(638, 255);
             this.MainWindowTable.TabIndex = 2;
             this.MainWindowTable.Paint += new System.Windows.Forms.PaintEventHandler(this.MainWindowTable_Paint);
             // 
@@ -212,21 +213,20 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 91F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(401, 219);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(453, 219);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // tableLayoutPanel7
             // 
             this.tableLayoutPanel7.ColumnCount = 2;
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 98F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
             this.tableLayoutPanel7.Controls.Add(this.positionField, 0, 0);
             this.tableLayoutPanel7.Controls.Add(this.positionLabel, 0, 0);
-            this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(203, 33);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(229, 33);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel7.Size = new System.Drawing.Size(195, 27);
             this.tableLayoutPanel7.TabIndex = 12;
             // 
@@ -243,7 +243,7 @@
             // 
             this.positionLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.positionLabel.AutoSize = true;
-            this.positionLabel.Location = new System.Drawing.Point(50, 7);
+            this.positionLabel.Location = new System.Drawing.Point(51, 7);
             this.positionLabel.Name = "positionLabel";
             this.positionLabel.Size = new System.Drawing.Size(44, 13);
             this.positionLabel.TabIndex = 1;
@@ -256,7 +256,7 @@
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.Controls.Add(this.phoneField2, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.phoneLabel2, 0, 0);
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(203, 66);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(229, 66);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -323,7 +323,7 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.Controls.Add(this.emailField, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.emailLabel, 0, 0);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(203, 3);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(229, 3);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -338,6 +338,19 @@
             this.emailField.Size = new System.Drawing.Size(92, 20);
             this.emailField.TabIndex = 0;
             this.emailField.Text = "Contact Email";
+            // 
+            // emailLabel
+            // 
+            this.emailLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.emailLabel.AutoSize = true;
+            this.emailLabel.LinkColor = System.Drawing.Color.Navy;
+            this.emailLabel.Location = new System.Drawing.Point(62, 5);
+            this.emailLabel.Name = "emailLabel";
+            this.emailLabel.Size = new System.Drawing.Size(32, 13);
+            this.emailLabel.TabIndex = 1;
+            this.emailLabel.TabStop = true;
+            this.emailLabel.Text = "Email";
+            this.emailLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.emailLabel_LinkClicked);
             // 
             // tableLayoutPanel2
             // 
@@ -376,9 +389,9 @@
             // 
             this.noteGroupBox.Controls.Add(this.contactNoteBox);
             this.noteGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.noteGroupBox.Location = new System.Drawing.Point(203, 98);
+            this.noteGroupBox.Location = new System.Drawing.Point(229, 98);
             this.noteGroupBox.Name = "noteGroupBox";
-            this.noteGroupBox.Size = new System.Drawing.Size(195, 118);
+            this.noteGroupBox.Size = new System.Drawing.Size(221, 118);
             this.noteGroupBox.TabIndex = 9;
             this.noteGroupBox.TabStop = false;
             this.noteGroupBox.Text = "Contact Notes";
@@ -388,7 +401,7 @@
             this.contactNoteBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.contactNoteBox.Location = new System.Drawing.Point(3, 16);
             this.contactNoteBox.Name = "contactNoteBox";
-            this.contactNoteBox.Size = new System.Drawing.Size(189, 99);
+            this.contactNoteBox.Size = new System.Drawing.Size(215, 99);
             this.contactNoteBox.TabIndex = 4;
             this.contactNoteBox.Text = "Contact Notes";
             // 
@@ -398,7 +411,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(3, 98);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(194, 118);
+            this.groupBox1.Size = new System.Drawing.Size(220, 118);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "School Notes";
@@ -408,22 +421,21 @@
             this.schoolNotebox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.schoolNotebox.Location = new System.Drawing.Point(3, 16);
             this.schoolNotebox.Name = "schoolNotebox";
-            this.schoolNotebox.Size = new System.Drawing.Size(188, 99);
+            this.schoolNotebox.Size = new System.Drawing.Size(214, 99);
             this.schoolNotebox.TabIndex = 5;
             this.schoolNotebox.Text = "School Notes";
             // 
             // tableLayoutPanel6
             // 
             this.tableLayoutPanel6.ColumnCount = 2;
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 96F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 14F));
             this.tableLayoutPanel6.Controls.Add(this.loginField, 1, 0);
             this.tableLayoutPanel6.Controls.Add(this.loginLabel, 0, 0);
-            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 33);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel6.Size = new System.Drawing.Size(194, 27);
             this.tableLayoutPanel6.TabIndex = 11;
             // 
@@ -440,7 +452,7 @@
             // 
             this.loginLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.loginLabel.AutoSize = true;
-            this.loginLabel.Location = new System.Drawing.Point(61, 7);
+            this.loginLabel.Location = new System.Drawing.Point(60, 7);
             this.loginLabel.Name = "loginLabel";
             this.loginLabel.Size = new System.Drawing.Size(33, 13);
             this.loginLabel.TabIndex = 0;
@@ -507,14 +519,14 @@
             this.flowLayoutPanel1.Location = new System.Drawing.Point(179, 225);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(407, 30);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(459, 30);
             this.flowLayoutPanel1.TabIndex = 5;
             // 
             // contactDeleteButton
             // 
             this.contactDeleteButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.contactDeleteButton.AutoSize = true;
-            this.contactDeleteButton.Location = new System.Drawing.Point(318, 3);
+            this.contactDeleteButton.Location = new System.Drawing.Point(370, 3);
             this.contactDeleteButton.Name = "contactDeleteButton";
             this.contactDeleteButton.Size = new System.Drawing.Size(86, 23);
             this.contactDeleteButton.TabIndex = 6;
@@ -527,7 +539,7 @@
             // 
             this.contactSavebutton.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.contactSavebutton.AutoSize = true;
-            this.contactSavebutton.Location = new System.Drawing.Point(232, 3);
+            this.contactSavebutton.Location = new System.Drawing.Point(284, 3);
             this.contactSavebutton.Name = "contactSavebutton";
             this.contactSavebutton.Size = new System.Drawing.Size(80, 23);
             this.contactSavebutton.TabIndex = 5;
@@ -535,24 +547,11 @@
             this.contactSavebutton.UseVisualStyleBackColor = true;
             this.contactSavebutton.Click += new System.EventHandler(this.contactSavebutton_Click);
             // 
-            // emailLabel
-            // 
-            this.emailLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.emailLabel.AutoSize = true;
-            this.emailLabel.LinkColor = System.Drawing.Color.Navy;
-            this.emailLabel.Location = new System.Drawing.Point(62, 5);
-            this.emailLabel.Name = "emailLabel";
-            this.emailLabel.Size = new System.Drawing.Size(32, 13);
-            this.emailLabel.TabIndex = 1;
-            this.emailLabel.TabStop = true;
-            this.emailLabel.Text = "Email";
-            this.emailLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.emailLabel_LinkClicked);
-            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(592, 316);
+            this.ClientSize = new System.Drawing.Size(644, 316);
             this.Controls.Add(this.WrapperTable);
             this.Name = "MainWindow";
             this.Text = "SchoolDirectory";
