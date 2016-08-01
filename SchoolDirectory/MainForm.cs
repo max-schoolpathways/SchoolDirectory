@@ -30,7 +30,9 @@ namespace SchoolDirectory
             
             SchoolEntry.currentEntry = AppController.GetSchool(GroupList.SelectedItem.ToString());
             //ContactEntry.currentContact = SchoolEntry.currentEntry.schoolContacts[0];
+            ContactEntry.currentContact = null;
             RecordList.ClearSelected();
+            clearFields();
             formRefresh();
         }
 
@@ -69,7 +71,17 @@ namespace SchoolDirectory
             updateStatusLabel();
             
         }
-
+        void clearFields()
+        {
+            phoneField1.Text = null;
+            phoneField2.Text = null;
+            loginField.Text = null;
+            positionField.Text = null;
+            nameField.Text = null;
+            emailField.Text = null;
+            schoolNotebox.Text = null;
+            contactNoteBox.Text = null;
+        }
         void loadFields(ContactEntry contact)
         {
             if (contact != null)
@@ -156,7 +168,7 @@ namespace SchoolDirectory
                 currentRecordDetails.Visible = true;
             }else
             {
-                currentRecordDetails.Text = "null";
+                currentRecordDetails.Text = "No Record Selected. Click on a record to view its details";
             }
 
         }
