@@ -152,7 +152,7 @@ namespace SchoolDirectory
             if (ContactEntry.currentContact != null)
             {
                 ContactEntry contact = ContactEntry.currentContact;
-                currentRecordDetails.Text = contact.contactLogin + ", " + contact.contactPosition + " @ " + contact.contactSchool.schoolScope;
+                currentRecordDetails.Text = contact.contactName + "(" + contact.contactLogin + "), " + contact.contactPosition + " @ " + contact.contactSchool.schoolScope + ": " + contact.contactEmail + " " + contact.contactPhone1;
             }
         }
         private void MainWindowTable_Paint(object sender, PaintEventArgs e)
