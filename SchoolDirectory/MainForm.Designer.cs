@@ -50,7 +50,6 @@
             this.phoneLabel1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.emailField = new System.Windows.Forms.TextBox();
-            this.emailLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.nameField = new System.Windows.Forms.TextBox();
             this.nameLabel = new System.Windows.Forms.Label();
@@ -70,6 +69,7 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.contactDeleteButton = new System.Windows.Forms.Button();
             this.contactSavebutton = new System.Windows.Forms.Button();
+            this.emailLabel = new System.Windows.Forms.LinkLabel();
             this.WrapperTable.SuspendLayout();
             this.MainWindowToolstrip.SuspendLayout();
             this.RecordStatusStrip.SuspendLayout();
@@ -339,16 +339,6 @@
             this.emailField.TabIndex = 0;
             this.emailField.Text = "Contact Email";
             // 
-            // emailLabel
-            // 
-            this.emailLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.emailLabel.AutoSize = true;
-            this.emailLabel.Location = new System.Drawing.Point(59, 5);
-            this.emailLabel.Name = "emailLabel";
-            this.emailLabel.Size = new System.Drawing.Size(35, 13);
-            this.emailLabel.TabIndex = 1;
-            this.emailLabel.Text = "Email:";
-            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 2;
@@ -545,6 +535,19 @@
             this.contactSavebutton.UseVisualStyleBackColor = true;
             this.contactSavebutton.Click += new System.EventHandler(this.contactSavebutton_Click);
             // 
+            // emailLabel
+            // 
+            this.emailLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.emailLabel.AutoSize = true;
+            this.emailLabel.LinkColor = System.Drawing.Color.Navy;
+            this.emailLabel.Location = new System.Drawing.Point(62, 5);
+            this.emailLabel.Name = "emailLabel";
+            this.emailLabel.Size = new System.Drawing.Size(32, 13);
+            this.emailLabel.TabIndex = 1;
+            this.emailLabel.TabStop = true;
+            this.emailLabel.Text = "Email";
+            this.emailLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.emailLabel_LinkClicked);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -604,7 +607,6 @@
         private System.Windows.Forms.TextBox phoneField1;
         private System.Windows.Forms.Label phoneLabel1;
         private System.Windows.Forms.TextBox emailField;
-        private System.Windows.Forms.Label emailLabel;
         private System.Windows.Forms.TextBox nameField;
         private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.GroupBox noteGroupBox;
@@ -626,6 +628,7 @@
         private System.Windows.Forms.Label loginLabel;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button contactDeleteButton;
+        private System.Windows.Forms.LinkLabel emailLabel;
     }
 }
 

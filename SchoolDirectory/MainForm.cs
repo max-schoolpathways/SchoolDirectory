@@ -173,5 +173,10 @@ namespace SchoolDirectory
 
             } 
         }
+
+        private void emailLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("mailto:" + emailField.Text);
+        }
     }
 }
