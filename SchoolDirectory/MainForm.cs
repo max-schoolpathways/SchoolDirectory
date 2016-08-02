@@ -54,9 +54,12 @@ namespace SchoolDirectory
             {
                 schoolNames.Add(school.schoolScope);
             }
-            
+
             schoolSource.DataSource = schoolNames;
+           // schoolSource.DataSource = SchoolEntry.allSchools;
             GroupList.DataSource = schoolSource;
+            //GroupList.DisplayMember = "schoolScope";
+            //GroupList.ValueMember = "schoolScope";
             schoolSource.ResetBindings(true);
             if (SchoolEntry.currentEntry != null)
             {

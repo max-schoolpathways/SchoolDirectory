@@ -12,10 +12,11 @@ namespace SchoolClasses
     [Serializable()]
     public class SchoolEntry
     {
+        public SchoolEntry details = new SchoolEntry("details");
         public static List<SchoolEntry> allSchools = new List<SchoolEntry>();
         public static SchoolEntry currentEntry;
         public List<ContactEntry> schoolContacts = new List<ContactEntry>();
-        public string schoolScope = "";
+        public string schoolScope { get; set; }
         public string schoolNotes = "";
         public string schoolName = "";
         public List<string> schoolPeriods = new List<string>();
