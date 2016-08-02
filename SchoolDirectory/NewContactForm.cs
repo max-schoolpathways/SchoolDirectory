@@ -21,7 +21,8 @@ namespace SchoolDirectory
 
         private void NewEntryForm_Load(object sender, EventArgs e)
         {
-            groupList.DataSource = MainWindow.Form.schoolNames;
+            groupList.DataSource = MainWindow.Form.schoolSource;
+            groupList.DisplayMember = "schoolScope";
 
             if (EntryBuilder.mode == EntryBuilder.modeEnum.Contact)
             {
@@ -40,7 +41,7 @@ namespace SchoolDirectory
             if(EntryBuilder.mode == EntryBuilder.modeEnum.Contact)
             {
                 ContactEntry newContact = new ContactEntry(nameField.Text);
-                newContact.contactSchool = AppController.GetSchool(groupList.SelectedItem.ToString());
+                newContact.contactSchool = groupList.SelectedItem as SchoolEntry;
                 newContact.contactSchool.schoolContacts.Add(newContact);
                 ContactEntry.allEntries.Add(newContact);
                 ContactEntry.currentContact = newContact;

@@ -12,11 +12,21 @@ namespace SchoolClasses
     [Serializable()]
     public class SchoolEntry
     {
-        public SchoolEntry details = new SchoolEntry("details");
         public static List<SchoolEntry> allSchools = new List<SchoolEntry>();
         public static SchoolEntry currentEntry;
         public List<ContactEntry> schoolContacts = new List<ContactEntry>();
-        public string schoolScope { get; set; }
+        private string _schoolScope;
+        public string schoolScope
+        {
+            get
+            {
+                return _schoolScope;
+            }
+            set
+            {
+                _schoolScope = value;
+            }
+        }
         public string schoolNotes = "";
         public string schoolName = "";
         public List<string> schoolPeriods = new List<string>();
@@ -43,8 +53,30 @@ namespace SchoolClasses
     {
         public static List<ContactEntry> allEntries = new List<ContactEntry>();
         public static ContactEntry currentContact;
-        public string contactName;
-        public string contactLogin = "";
+        private string _contactName;
+        public string contactName
+        {
+            get
+            {
+                return _contactName;
+            }
+            set
+            {
+                _contactName = value;
+            }
+        }
+        private string _contactLogin;
+        public string contactLogin
+        {
+            get
+            {
+                return _contactLogin;
+            }
+            set
+            {
+                _contactLogin = value;
+            }
+        }
         public string contactPhone1 = "";
         public string contactPhone2 = "";
         public string contactEmail = "";
@@ -64,6 +96,8 @@ namespace SchoolClasses
         {
             ContactEntry.currentContact.contactSchool.schoolContacts.Remove(this);
             ContactEntry.currentContact.contactSchool = null;
+            ContactEntry.currentContact = null;
+            AppController.saveRecords();
         }
         
     }
@@ -87,6 +121,9 @@ namespace SchoolClasses
         }
     }
 
+    //EntryBuilder will likely be deprecated with the
+    //implementation of the new GroupInfo form.
+
     public class EntryBuilder
     {
         public enum modeEnum {Group, Contact};
@@ -100,7 +137,7 @@ namespace SchoolClasses
         public static ContactEntry currentContact;
 
         
-        public static string directory = "C://Users//Public//SchoolDirectory";
+        public static string directory = "C://Users//Public//SchoolDirectory//dev";
         public static string Path = directory + "//data.bin";
 
 

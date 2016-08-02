@@ -13,23 +13,19 @@ namespace SchoolDirectory
 {
     public partial class MainWindow : Form
     {
-        public static MainWindow Form;
-        public List<string> schoolNames = new List<string>(); 
-        public List<string> contactNames = new List<string>(); 
+        public static MainWindow Form; 
         public BindingSource schoolSource = new BindingSource();
         public BindingSource contactSource = new BindingSource();
         public MainWindow()
         {
             InitializeComponent();
-            Form = this;
-            
+            Form = this; 
         }
 
         private void GroupList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
-            SchoolEntry.currentEntry = AppController.GetSchool(GroupList.SelectedItem.ToString());
-            //ContactEntry.currentContact = SchoolEntry.currentEntry.schoolContacts[0];
+
+            SchoolEntry.currentEntry = GroupList.SelectedItem as SchoolEntry;
             ContactEntry.currentContact = null;
             RecordList.ClearSelected();
             clearFields();
@@ -43,32 +39,15 @@ namespace SchoolDirectory
         }
         public void formRefresh()
         {
-            //AppController.saveRecords();
-           // AppController.loadRecords();
-            //Old refresh method
-             
-            schoolNames.Clear();
-            contactNames.Clear();
-
-            foreach(var school in SchoolEntry.allSchools)
-            {
-                schoolNames.Add(school.schoolScope);
-            }
-
-            schoolSource.DataSource = schoolNames;
-           // schoolSource.DataSource = SchoolEntry.allSchools;
+            schoolSource.DataSource = SchoolEntry.allSchools;
             GroupList.DataSource = schoolSource;
-            //GroupList.DisplayMember = "schoolScope";
-            //GroupList.ValueMember = "schoolScope";
+            GroupList.DisplayMember = "schoolScope";
             schoolSource.ResetBindings(true);
             if (SchoolEntry.currentEntry != null)
             {
-                foreach(ContactEntry contact in SchoolEntry.currentEntry.schoolContacts)
-                {
-                    contactNames.Add(contact.contactLogin);
-                }
-                contactSource.DataSource = contactNames;
+                contactSource.DataSource = SchoolEntry.currentEntry.schoolContacts;
                 RecordList.DataSource = contactSource;
+                RecordList.DisplayMember = "contactLogin";
                 contactSource.ResetBindings(true);
             }
             updateStatusLabel();
@@ -147,7 +126,7 @@ namespace SchoolDirectory
         {
             if(RecordList.SelectedItem != null && RecordList.SelectedItem.ToString() != "")
             {
-                ContactEntry.currentContact = AppController.GetContact(RecordList.SelectedItem.ToString());
+                ContactEntry.currentContact = RecordList.SelectedItem as ContactEntry;
             }
             formRefresh();
             loadFields(ContactEntry.currentContact);
@@ -156,10 +135,8 @@ namespace SchoolDirectory
         private void MainWindow_Load(object sender, EventArgs e)
         {
             AppController.loadRecords();
-            //schoolSource.DataSource = SchoolEntry.allSchools;
-            // GroupList.DataSource = schoolSource;
-            //RecordList.DataSource = contactSource;
-            formRefresh();
+            
+            //formRefresh();
             formRefresh();
         }
         private void updateStatusLabel()
@@ -186,6 +163,7 @@ namespace SchoolDirectory
             if(confirmResult == DialogResult.Yes)
             {
                 ContactEntry.currentContact.Delete();
+                clearFields();
                 formRefresh();
             }
             else
