@@ -1,6 +1,6 @@
 ﻿namespace SchoolDirectory
 {
-    partial class NewEntryForm
+    partial class NewContactForm
     {
         /// <summary>
         /// Required designer variable.

@@ -17,7 +17,11 @@ namespace SchoolClasses
         public List<ContactEntry> schoolContacts = new List<ContactEntry>();
         public string schoolScope = "";
         public string schoolNotes = "";
-
+        public string schoolName = "";
+        public List<string> schoolPeriods = new List<string>();
+        public ContactEntry director;
+        public ContactEntry primaryContact;
+        public List<ProductEntry> integrations = new List<ProductEntry>();
         
         public SchoolEntry(string scope, string notes, List<ContactEntry> contacts)
         {
@@ -62,8 +66,25 @@ namespace SchoolClasses
         }
         
     }
-
-    
+    [Serializable()]
+    public class ProductEntry
+    {
+        public string name;
+        public string websiteURL;
+        public string description;
+        public string notes;
+        public ProductEntry(string _name)
+        {
+            name = _name;
+        }
+        public ProductEntry(string _name, string URL, string _description, string _notes)
+        {
+            name = _name;
+            websiteURL = URL;
+            description = _description;
+            notes = _notes;
+        }
+    }
 
     public class EntryBuilder
     {

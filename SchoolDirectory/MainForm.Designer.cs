@@ -481,6 +481,7 @@
             this.GroupList.Location = new System.Drawing.Point(3, 3);
             this.GroupList.Name = "GroupList";
             this.GroupList.Size = new System.Drawing.Size(80, 219);
+            this.GroupList.Sorted = true;
             this.GroupList.TabIndex = 0;
             this.GroupList.SelectedIndexChanged += new System.EventHandler(this.GroupList_SelectedIndexChanged);
             // 

@@ -11,10 +11,10 @@ using SchoolClasses;
 
 namespace SchoolDirectory
 {
-    public partial class NewEntryForm : Form
+    public partial class NewContactForm : Form
     {
 
-        public NewEntryForm()
+        public NewContactForm()
         {
             InitializeComponent();
         }
@@ -58,7 +58,7 @@ namespace SchoolDirectory
 
             }
             MainWindow.Form.formRefresh();
-            NewEntryForm.ActiveForm.Close();
+            NewContactForm.ActiveForm.Close();
         }
 
         private void groupList_SelectedIndexChanged(object sender, EventArgs e)

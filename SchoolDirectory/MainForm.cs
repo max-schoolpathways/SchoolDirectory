@@ -39,7 +39,7 @@ namespace SchoolDirectory
         private void newGroupButton_Click(object sender, EventArgs e)
         {
             EntryBuilder.mode = EntryBuilder.modeEnum.Group;
-            new NewEntryForm().Show();
+            new NewContactForm().Show();
         }
         public void formRefresh()
         {
@@ -105,7 +105,7 @@ namespace SchoolDirectory
         private void newRecordButton_Click(object sender, EventArgs e)
         {
             EntryBuilder.mode = EntryBuilder.modeEnum.Contact;
-            new NewEntryForm().Show();
+            new NewContactForm().Show();
         }
 
         private void saveButton_Click(object sender, EventArgs e)
