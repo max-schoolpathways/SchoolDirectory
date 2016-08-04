@@ -34,8 +34,8 @@ namespace SchoolDirectory
 
         private void newGroupButton_Click(object sender, EventArgs e)
         {
-            EntryBuilder.mode = EntryBuilder.modeEnum.Group;
-            new NewContactForm().Show();
+            EntryBuilder.mode = EntryBuilder.modeEnum.New;
+            new GroupInfo().Show();
         }
         public void formRefresh()
         {
@@ -48,8 +48,9 @@ namespace SchoolDirectory
                 contactSource.DataSource = SchoolEntry.currentEntry.schoolContacts;
                 RecordList.DataSource = contactSource;
                 RecordList.DisplayMember = "contactLogin";
-                contactSource.ResetBindings(true);
+                //contactSource.ResetBindings(true);
             }
+            contactSource.ResetBindings(false);
             updateStatusLabel();
             
         }
@@ -63,9 +64,12 @@ namespace SchoolDirectory
             emailField.Text = null;
             schoolNotebox.Text = null;
             contactNoteBox.Text = null;
+            isDirectorCheckbox.Checked = false;
+            isPrimaryContactCheckbox.Checked = false;
         }
         void loadFields(ContactEntry contact)
         {
+            clearFields();
             if (contact != null)
             {
                 phoneField1.Text = contact.contactPhone1;
@@ -76,6 +80,14 @@ namespace SchoolDirectory
                 emailField.Text = contact.contactEmail;
                 schoolNotebox.Text = contact.contactSchool.schoolNotes;
                 contactNoteBox.Text = contact.contactNotes;
+                if(contact.contactSchool.director == contact)
+                {
+                    isDirectorCheckbox.Checked = true;
+                }
+                if(contact.contactSchool.primaryContact == contact)
+                {
+                    isPrimaryContactCheckbox.Checked = true;
+                }
             }
         }
 
@@ -86,7 +98,6 @@ namespace SchoolDirectory
 
         private void newRecordButton_Click(object sender, EventArgs e)
         {
-            EntryBuilder.mode = EntryBuilder.modeEnum.Contact;
             new NewContactForm().Show();
         }
 
@@ -96,14 +107,21 @@ namespace SchoolDirectory
         }
         void saveRecord()
         {
-            SchoolEntry.currentEntry.schoolNotes = schoolNotebox.Text;
-            ContactEntry.currentContact.contactEmail = emailField.Text;
-            ContactEntry.currentContact.contactName = nameField.Text;
-            ContactEntry.currentContact.contactLogin = loginField.Text;
-            ContactEntry.currentContact.contactPosition = positionField.Text;
-            ContactEntry.currentContact.contactNotes = contactNoteBox.Text;
-            ContactEntry.currentContact.contactPhone1 = phoneField1.Text;
-            ContactEntry.currentContact.contactPhone2 = phoneField2.Text;
+            if (ContactEntry.currentContact != null)
+            {
+                SchoolEntry.currentEntry.schoolNotes = schoolNotebox.Text;
+                ContactEntry.currentContact.contactEmail = emailField.Text;
+                ContactEntry.currentContact.contactName = nameField.Text;
+                ContactEntry.currentContact.contactLogin = loginField.Text;
+                ContactEntry.currentContact.contactPosition = positionField.Text;
+                ContactEntry.currentContact.contactNotes = contactNoteBox.Text;
+                ContactEntry.currentContact.contactPhone1 = phoneField1.Text;
+                ContactEntry.currentContact.contactPhone2 = phoneField2.Text;
+            }
+            else
+            {
+                MessageBox.Show("No entry selected!", "No Entry", MessageBoxButtons.OK);
+            }
 
         }
         void loadRecord()
@@ -120,6 +138,14 @@ namespace SchoolDirectory
             saveRecord();
             AppController.saveRecords();
             formRefresh();
+            if (isDirectorCheckbox.Checked)
+            {
+                ContactEntry.currentContact.contactSchool.director = ContactEntry.currentContact;
+            }
+            if (isPrimaryContactCheckbox.Checked)
+            {
+                ContactEntry.currentContact.contactSchool.primaryContact = ContactEntry.currentContact;
+            }
         }
 
         private void RecordList_SelectedIndexChanged(object sender, EventArgs e)
@@ -159,17 +185,20 @@ namespace SchoolDirectory
 
         private void contactDeleteButton_Click(object sender, EventArgs e)
         {
-            var confirmResult = MessageBox.Show("Are you sure you wish to delete this record?", "Confirm Delete", MessageBoxButtons.YesNo);
-            if(confirmResult == DialogResult.Yes)
+            if (ContactEntry.currentContact != null)
             {
-                ContactEntry.currentContact.Delete();
-                clearFields();
-                formRefresh();
+                var confirmResult = MessageBox.Show("Are you sure you wish to delete this record?", "Confirm Delete", MessageBoxButtons.YesNo);
+                if (confirmResult == DialogResult.Yes)
+                {
+                    ContactEntry.currentContact.Delete();
+                    clearFields();
+                    formRefresh();
+                }
             }
             else
             {
-
-            } 
+                MessageBox.Show("No active record!", "Warning", MessageBoxButtons.OK);
+            }
         }
 
         private void emailLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -180,6 +209,12 @@ namespace SchoolDirectory
         private void currentRecordDetails_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(currentRecordDetails.Text);
+        }
+
+        private void GroupList_DoubleClick(object sender, EventArgs e)
+        {
+            EntryBuilder.mode = EntryBuilder.modeEnum.Existing;
+            new GroupInfo().Show();
         }
     }
 }

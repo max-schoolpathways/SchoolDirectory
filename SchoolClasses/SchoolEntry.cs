@@ -14,7 +14,7 @@ namespace SchoolClasses
     {
         public static List<SchoolEntry> allSchools = new List<SchoolEntry>();
         public static SchoolEntry currentEntry;
-        public List<ContactEntry> schoolContacts = new List<ContactEntry>();
+        public List<ContactEntry> schoolContacts;
         private string _schoolScope;
         public string schoolScope
         {
@@ -32,19 +32,40 @@ namespace SchoolClasses
         public List<string> schoolPeriods = new List<string>();
         public ContactEntry director;
         public ContactEntry primaryContact;
-        public List<ProductEntry> integrations = new List<ProductEntry>();
+        public List<ProductEntry> products = new List<ProductEntry>();
         
         public SchoolEntry(string scope, string notes, List<ContactEntry> contacts)
         {
             schoolScope = scope;
             schoolNotes = notes;
+            schoolContacts = new List<ContactEntry>();
             schoolContacts = contacts;
         }
         public SchoolEntry(string scope)
         {
             schoolScope = scope;
+            schoolContacts = new List<ContactEntry>();
         }
-
+        public void Delete()
+        {
+            List<ContactEntry> contacts = new List<ContactEntry>();
+            if (schoolContacts != null)
+            {
+                foreach (var contact in schoolContacts)
+                {
+                    contacts.Add(contact);
+                    //contact.Delete(contact);
+                }
+                foreach (var contact in contacts)
+                {
+                    contact.Delete(contact);
+                }
+            }
+            SchoolEntry.allSchools.Remove(this);
+            director = null;
+            primaryContact = null;
+            AppController.saveRecords();
+        }
        
 
     }
@@ -99,6 +120,12 @@ namespace SchoolClasses
             ContactEntry.currentContact = null;
             AppController.saveRecords();
         }
+        public void Delete(ContactEntry contact)
+        {
+            contact.contactSchool.schoolContacts.Remove(this);
+            contact.contactSchool = null;
+            AppController.saveRecords();
+        }
         
     }
     [Serializable()]
@@ -124,9 +151,9 @@ namespace SchoolClasses
     //EntryBuilder will likely be deprecated with the
     //implementation of the new GroupInfo form.
 
-    public class EntryBuilder
+    public class EntryBuilder //deprecated
     {
-        public enum modeEnum {Group, Contact};
+        public enum modeEnum {New, Existing};
         public static modeEnum mode;
     }
 

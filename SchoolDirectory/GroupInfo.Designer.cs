@@ -30,7 +30,9 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.noteTextbox = new System.Windows.Forms.RichTextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.productsList = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
@@ -43,8 +45,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.groupNameBox = new System.Windows.Forms.TextBox();
             this.scopeNameBox = new System.Windows.Forms.TextBox();
-            this.noteTextbox = new System.Windows.Forms.RichTextBox();
-            this.productsList = new System.Windows.Forms.ListBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -56,7 +56,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.25373F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.74627F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 105F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 109F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.groupBox1, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.groupBox2, 2, 2);
@@ -90,22 +90,41 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(3, 195);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(203, 161);
+            this.groupBox1.Size = new System.Drawing.Size(202, 161);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Notes";
+            // 
+            // noteTextbox
+            // 
+            this.noteTextbox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.noteTextbox.Location = new System.Drawing.Point(3, 16);
+            this.noteTextbox.Name = "noteTextbox";
+            this.noteTextbox.Size = new System.Drawing.Size(196, 142);
+            this.noteTextbox.TabIndex = 0;
+            this.noteTextbox.Text = "";
             // 
             // groupBox2
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.groupBox2, 2);
             this.groupBox2.Controls.Add(this.productsList);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(212, 195);
+            this.groupBox2.Location = new System.Drawing.Point(211, 195);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(209, 161);
+            this.groupBox2.Size = new System.Drawing.Size(210, 161);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Products";
+            // 
+            // productsList
+            // 
+            this.productsList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.productsList.FormattingEnabled = true;
+            this.productsList.Location = new System.Drawing.Point(3, 16);
+            this.productsList.Name = "productsList";
+            this.productsList.Size = new System.Drawing.Size(204, 142);
+            this.productsList.Sorted = true;
+            this.productsList.TabIndex = 0;
             // 
             // label1
             // 
@@ -113,7 +132,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(3, 63);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(97, 13);
+            this.label1.Size = new System.Drawing.Size(96, 13);
             this.label1.TabIndex = 2;
             this.label1.Text = "Group Name";
             // 
@@ -121,7 +140,7 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(212, 63);
+            this.label2.Location = new System.Drawing.Point(211, 63);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(99, 13);
             this.label2.TabIndex = 3;
@@ -133,7 +152,7 @@
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Location = new System.Drawing.Point(3, 159);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(97, 13);
+            this.linkLabel1.Size = new System.Drawing.Size(96, 13);
             this.linkLabel1.TabIndex = 4;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Primary Contact";
@@ -142,7 +161,7 @@
             // 
             this.linkLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Location = new System.Drawing.Point(212, 159);
+            this.linkLabel2.Location = new System.Drawing.Point(211, 159);
             this.linkLabel2.Name = "linkLabel2";
             this.linkLabel2.Size = new System.Drawing.Size(99, 13);
             this.linkLabel2.TabIndex = 5;
@@ -153,7 +172,7 @@
             // 
             this.primaryContactName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.primaryContactName.AutoSize = true;
-            this.primaryContactName.Location = new System.Drawing.Point(106, 153);
+            this.primaryContactName.Location = new System.Drawing.Point(105, 153);
             this.primaryContactName.Name = "primaryContactName";
             this.primaryContactName.Size = new System.Drawing.Size(100, 26);
             this.primaryContactName.TabIndex = 6;
@@ -163,9 +182,9 @@
             // 
             this.directorName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.directorName.AutoSize = true;
-            this.directorName.Location = new System.Drawing.Point(317, 153);
+            this.directorName.Location = new System.Drawing.Point(316, 153);
             this.directorName.Name = "directorName";
-            this.directorName.Size = new System.Drawing.Size(104, 26);
+            this.directorName.Size = new System.Drawing.Size(105, 26);
             this.directorName.TabIndex = 7;
             this.directorName.Text = "Group Director Name";
             // 
@@ -174,20 +193,22 @@
             this.saveButton.Dock = System.Windows.Forms.DockStyle.Left;
             this.saveButton.Location = new System.Drawing.Point(3, 362);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(97, 27);
+            this.saveButton.Size = new System.Drawing.Size(96, 27);
             this.saveButton.TabIndex = 8;
             this.saveButton.Text = "Save Group";
             this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // deleteButton
             // 
             this.deleteButton.Dock = System.Windows.Forms.DockStyle.Left;
-            this.deleteButton.Location = new System.Drawing.Point(106, 362);
+            this.deleteButton.Location = new System.Drawing.Point(105, 362);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(100, 27);
             this.deleteButton.TabIndex = 9;
             this.deleteButton.Text = "Delete Group";
             this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // removeProductButton
             // 
@@ -202,7 +223,7 @@
             // button1
             // 
             this.button1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.button1.Location = new System.Drawing.Point(212, 362);
+            this.button1.Location = new System.Drawing.Point(211, 362);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(99, 27);
             this.button1.TabIndex = 11;
@@ -212,7 +233,7 @@
             // groupNameBox
             // 
             this.groupNameBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.groupNameBox.Location = new System.Drawing.Point(106, 60);
+            this.groupNameBox.Location = new System.Drawing.Point(105, 60);
             this.groupNameBox.Name = "groupNameBox";
             this.groupNameBox.Size = new System.Drawing.Size(100, 20);
             this.groupNameBox.TabIndex = 12;
@@ -220,29 +241,10 @@
             // scopeNameBox
             // 
             this.scopeNameBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.scopeNameBox.Location = new System.Drawing.Point(317, 60);
+            this.scopeNameBox.Location = new System.Drawing.Point(316, 60);
             this.scopeNameBox.Name = "scopeNameBox";
             this.scopeNameBox.Size = new System.Drawing.Size(100, 20);
             this.scopeNameBox.TabIndex = 13;
-            // 
-            // noteTextbox
-            // 
-            this.noteTextbox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.noteTextbox.Location = new System.Drawing.Point(3, 16);
-            this.noteTextbox.Name = "noteTextbox";
-            this.noteTextbox.Size = new System.Drawing.Size(197, 142);
-            this.noteTextbox.TabIndex = 0;
-            this.noteTextbox.Text = "";
-            // 
-            // productsList
-            // 
-            this.productsList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.productsList.FormattingEnabled = true;
-            this.productsList.Location = new System.Drawing.Point(3, 16);
-            this.productsList.Name = "productsList";
-            this.productsList.Size = new System.Drawing.Size(203, 142);
-            this.productsList.Sorted = true;
-            this.productsList.TabIndex = 0;
             // 
             // GroupInfo
             // 
@@ -252,6 +254,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "GroupInfo";
             this.Text = "GroupInfo";
+            this.Load += new System.EventHandler(this.GroupInfo_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.groupBox1.ResumeLayout(false);

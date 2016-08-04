@@ -23,41 +23,19 @@ namespace SchoolDirectory
         {
             groupList.DataSource = MainWindow.Form.schoolSource;
             groupList.DisplayMember = "schoolScope";
-
-            if (EntryBuilder.mode == EntryBuilder.modeEnum.Contact)
-            {
-                groupList.Visible = true;
-                groupLabel.Visible = true;
-            }
-            else
-            {
-                groupList.Visible = false;
-                groupLabel.Visible = false;
-            }
         }
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            if(EntryBuilder.mode == EntryBuilder.modeEnum.Contact)
-            {
-                ContactEntry newContact = new ContactEntry(nameField.Text);
-                newContact.contactSchool = groupList.SelectedItem as SchoolEntry;
-                newContact.contactSchool.schoolContacts.Add(newContact);
-                ContactEntry.allEntries.Add(newContact);
-                ContactEntry.currentContact = newContact;
+           
+            ContactEntry newContact = new ContactEntry(nameField.Text);
+            newContact.contactSchool = groupList.SelectedItem as SchoolEntry;
+            
+            newContact.contactSchool.schoolContacts.Add(newContact);
+            ContactEntry.allEntries.Add(newContact);
+            ContactEntry.currentContact = newContact;
 
-            }
-            else
-            {
-                SchoolEntry newSchool = new SchoolEntry(nameField.Text);
-                SchoolEntry.allSchools.Add(newSchool);
-                if(SchoolEntry.currentEntry == null)
-                {
-                    SchoolEntry.currentEntry = newSchool;
-                }
-                
-
-            }
+           
             MainWindow.Form.formRefresh();
             NewContactForm.ActiveForm.Close();
         }

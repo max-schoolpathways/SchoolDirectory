@@ -106,16 +106,15 @@
             this.groupList.Size = new System.Drawing.Size(120, 43);
             this.groupList.Sorted = true;
             this.groupList.TabIndex = 5;
-            this.groupList.Visible = false;
             this.groupList.SelectedIndexChanged += new System.EventHandler(this.groupList_SelectedIndexChanged);
             // 
-            // NewEntryForm
+            // NewContactForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(245, 150);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "NewEntryForm";
+            this.Name = "NewContactForm";
             this.Text = "NewEntryForm";
             this.Load += new System.EventHandler(this.NewEntryForm_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
