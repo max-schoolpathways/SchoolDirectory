@@ -14,7 +14,7 @@ namespace SchoolDirectory
     public partial class GroupInfo : Form
     {
         private BindingSource productSource = new BindingSource();
-
+        private bool productActiveStatus = false;
         public GroupInfo()
         {
             InitializeComponent();
@@ -24,6 +24,7 @@ namespace SchoolDirectory
         {
             if(EntryBuilder.mode == EntryBuilder.modeEnum.Existing)
             {
+                addProductButton.Enabled = true;
                 groupNameBox.Text = SchoolEntry.currentEntry.schoolName;
                 scopeNameBox.Text = SchoolEntry.currentEntry.schoolScope;
                 noteTextbox.Text = SchoolEntry.currentEntry.schoolNotes;
@@ -39,6 +40,11 @@ namespace SchoolDirectory
                     primaryContactName.Text = SchoolEntry.currentEntry.primaryContact.contactName;
                 }
             }
+            else
+            {
+                addProductButton.Enabled = false;
+                
+            }
         }
 
         private void saveButton_Click(object sender, EventArgs e)
@@ -51,9 +57,11 @@ namespace SchoolDirectory
                 MainWindow.Form.formRefresh();
                 AppController.saveRecords();
                 ActiveForm.Close();
+                
             }else
             {
-                SchoolEntry newSchool = new SchoolEntry(scopeNameBox.Text);
+              
+                SchoolEntry newSchool = new SchoolEntry(scopeNameBox.Text, groupNameBox.Text);
                 if (!SchoolEntry.allSchools.Contains(newSchool))
                 {
                     SchoolEntry.allSchools.Add(newSchool);
@@ -61,6 +69,18 @@ namespace SchoolDirectory
                 AppController.saveRecords();
                 MainWindow.Form.formRefresh();
                 ActiveForm.Close();
+            }
+            if(ExperienceEntry.currentExperienceEntry != null)
+            {
+                if (activeRadioTrue.Checked)
+                {
+                    productActiveStatus = true;
+                }
+                else
+                {
+                    productActiveStatus = false;
+                }
+                ExperienceEntry.currentExperienceEntry.isActive = productActiveStatus;
             }
         }
 

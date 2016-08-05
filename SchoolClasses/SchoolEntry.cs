@@ -32,7 +32,7 @@ namespace SchoolClasses
         public List<string> schoolPeriods = new List<string>();
         public ContactEntry director;
         public ContactEntry primaryContact;
-        public List<ProductEntry> products = new List<ProductEntry>();
+        public List<ExperienceEntry> products = new List<ExperienceEntry>();
         
         public SchoolEntry(string scope, string notes, List<ContactEntry> contacts)
         {
@@ -41,9 +41,10 @@ namespace SchoolClasses
             schoolContacts = new List<ContactEntry>();
             schoolContacts = contacts;
         }
-        public SchoolEntry(string scope)
+        public SchoolEntry(string scope, string name)
         {
             schoolScope = scope;
+            schoolName = name;
             schoolContacts = new List<ContactEntry>();
         }
         public void Delete()
@@ -66,7 +67,27 @@ namespace SchoolClasses
             primaryContact = null;
             AppController.saveRecords();
         }
-       
+
+        /// <summary>
+        /// Returns a list of the users of the specified product.
+        /// </summary>
+        /// <param name="product"></param>
+        /// <returns></returns>
+        public static List<SchoolEntry> GetUsers(ProductEntry product)
+        {
+            List<SchoolEntry> schoolList = new List<SchoolEntry>();
+            foreach (SchoolEntry school in allSchools)
+            {
+                foreach(ExperienceEntry eproduct in school.products)
+                {
+                    if(eproduct.product == product)
+                    {
+                        schoolList.Add(school);
+                    }
+                }
+            }
+            return schoolList;
+        }
 
     }
     [Serializable()]
@@ -131,27 +152,77 @@ namespace SchoolClasses
     [Serializable()]
     public class ProductEntry
     {
-        public string name;
+        public static ProductEntry currentProduct;
+        private string _name;
+        public string name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                _name = value;
+            }
+        }
+        public string company;
         public string websiteURL;
         public string description;
         public string notes;
-        public ProductEntry(string _name)
+        public ProductEntry(string productName)
         {
-            name = _name;
+            name = productName;
         }
-        public ProductEntry(string _name, string URL, string _description, string _notes)
+        public ProductEntry(string productName, string URL, string _description, string _notes)
         {
-            name = _name;
+            name = productName;
             websiteURL = URL;
             description = _description;
             notes = _notes;
         }
     }
+    [Serializable()]
+    public class ExperienceEntry
+    {
+        public static ExperienceEntry currentExperienceEntry;
+        private SchoolEntry _school;
+        public SchoolEntry school
+        {
+            get
+            {
+                return _school;
+            }
+            set
+            {
+                _school = value;
+            }
+        }
+        private ProductEntry _product;
+        public ProductEntry product
+        {
+            get
+            {
+                return _product;
+            }
+            set
+            {
+                _product = value;
+            }
+        }
+        public bool isActive;
+        public string purchaseDate;
+        public string cancelDate;
+        public string cost;
+        public string notes;
+        public ExperienceEntry(ProductEntry product_, SchoolEntry school_)
+        {
+            product = product_;
+            school = school_;
+        }
+    }
 
-    //EntryBuilder will likely be deprecated with the
-    //implementation of the new GroupInfo form.
 
-    public class EntryBuilder //deprecated
+    public class EntryBuilder
     {
         public enum modeEnum {New, Existing};
         public static modeEnum mode;
@@ -160,8 +231,8 @@ namespace SchoolClasses
     public class AppController
     {
         
-        public static SchoolEntry currentSchool;
-        public static ContactEntry currentContact;
+        //public static SchoolEntry currentSchool;
+        //public static ContactEntry currentContact;
 
         
         public static string directory = "C://Users//Public//SchoolDirectory//dev";
@@ -220,4 +291,6 @@ namespace SchoolClasses
 
         }
     }
+    
+    
 }
