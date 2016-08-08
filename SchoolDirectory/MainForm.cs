@@ -216,5 +216,18 @@ namespace SchoolDirectory
             EntryBuilder.mode = EntryBuilder.modeEnum.Existing;
             new GroupInfo().Show();
         }
+
+        private void addNewProductToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EntryBuilder.mode = EntryBuilder.modeEnum.New;
+            new ProductInfo().Show();
+        }
+
+        private void viewProductsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EntryBuilder.mode = EntryBuilder.modeEnum.Existing;
+            ProductEntry.currentProduct = ProductEntry.allProducts[0];
+            new ProductInfo().Show();
+        }
     }
 }

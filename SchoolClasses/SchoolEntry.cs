@@ -153,6 +153,7 @@ namespace SchoolClasses
     public class ProductEntry
     {
         public static ProductEntry currentProduct;
+        public static List<ProductEntry> allProducts = new List<ProductEntry>();
         private string _name;
         public string name
         {
@@ -169,6 +170,7 @@ namespace SchoolClasses
         public string websiteURL;
         public string description;
         public string notes;
+        public string cost;
         public ProductEntry(string productName)
         {
             name = productName;
@@ -181,6 +183,9 @@ namespace SchoolClasses
             notes = _notes;
         }
     }
+    /// <summary>
+    /// An "Experience" is the relationship between a Group and a Product.
+    /// </summary>
     [Serializable()]
     public class ExperienceEntry
     {
@@ -236,7 +241,8 @@ namespace SchoolClasses
 
         
         public static string directory = "C://Users//Public//SchoolDirectory//dev";
-        public static string Path = directory + "//data.bin";
+        public static string groupPath = directory + "//groupData.bin";
+        public static string productPath = directory + "//productData.bin";
 
 
         public static void saveRecords()
@@ -244,21 +250,33 @@ namespace SchoolClasses
             if (!Directory.Exists(directory)) {
                 Directory.CreateDirectory(directory);
             }
-            Stream writeStream = File.Create(Path);
-            BinaryFormatter serializer = new BinaryFormatter();
-            serializer.Serialize(writeStream, SchoolEntry.allSchools);
-            writeStream.Close();
+            Stream schoolWriteStream = File.Create(groupPath);
+            BinaryFormatter schoolSerializer = new BinaryFormatter();
+            schoolSerializer.Serialize(schoolWriteStream, SchoolEntry.allSchools);
+            schoolWriteStream.Close();
+
+            Stream productWriteStream = File.Create(productPath);
+            BinaryFormatter productSerializer = new BinaryFormatter();
+            productSerializer.Serialize(productWriteStream, ProductEntry.allProducts);
+            productWriteStream.Close();
         }
 
         public static void loadRecords()
         {
             //SchoolEntry.allSchools = new List<SchoolEntry>();
-            if (File.Exists(Path))
+            if (File.Exists(groupPath))
             {
-                Stream readStream = File.OpenRead(Path);
+                Stream readStream = File.OpenRead(groupPath);
                 BinaryFormatter deserializer = new BinaryFormatter();
                 SchoolEntry.allSchools = (List<SchoolEntry>)deserializer.Deserialize(readStream);
                 readStream.Close();
+            }
+            if (File.Exists(productPath))
+            {
+                Stream productReadStream = File.OpenRead(productPath);
+                BinaryFormatter productDeserializer = new BinaryFormatter();
+                ProductEntry.allProducts = (List<ProductEntry>)productDeserializer.Deserialize(productReadStream);
+                productReadStream.Close();
             }
         }
         
