@@ -74,6 +74,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddFromList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddFromList.Designer.cs">
+      <DependentUpon>AddFromList.cs</DependentUpon>
+    </Compile>
     <Compile Include="GroupInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +106,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AddFromList.resx">
+      <DependentUpon>AddFromList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GroupInfo.resx">
       <DependentUpon>GroupInfo.cs</DependentUpon>
     </EmbeddedResource>
