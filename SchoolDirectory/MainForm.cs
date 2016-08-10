@@ -229,5 +229,14 @@ namespace SchoolDirectory
             ProductEntry.currentProduct = ProductEntry.allProducts[0];
             new ProductInfo().Show();
         }
+
+        private void breakpointToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Break();
+        }
+        private void Break()
+        {
+
+        }
     }
 }

@@ -24,13 +24,22 @@ namespace SchoolDirectory
         {
             if(EntryBuilder.mode == EntryBuilder.modeEnum.Existing)
             {
+                formRefresh();
+                if(SchoolEntry.currentEntry.products.Count > 1)
+                {
+                    ExperienceEntry.currentExperienceEntry = SchoolEntry.currentEntry.products[0];
+                }
+                //Below moved to formRefresh();
+                /*
                 addProductButton.Enabled = true;
                 groupNameBox.Text = SchoolEntry.currentEntry.schoolName;
                 scopeNameBox.Text = SchoolEntry.currentEntry.schoolScope;
                 noteTextbox.Text = SchoolEntry.currentEntry.schoolNotes;
                 productSource.DataSource = SchoolEntry.currentEntry.products;
                 productsList.DataSource = productSource;
+                productsList.DisplayMember = "productName";
                 productSource.ResetBindings(false);
+                
                 if (SchoolEntry.currentEntry.director != null)
                 {
                     directorName.Text = SchoolEntry.currentEntry.director.contactName;
@@ -39,6 +48,7 @@ namespace SchoolDirectory
                 {
                     primaryContactName.Text = SchoolEntry.currentEntry.primaryContact.contactName;
                 }
+                */
             }
             else
             {
@@ -72,15 +82,7 @@ namespace SchoolDirectory
             }
             if(ExperienceEntry.currentExperienceEntry != null)
             {
-                if (activeRadioTrue.Checked)
-                {
-                    productActiveStatus = true;
-                }
-                else
-                {
-                    productActiveStatus = false;
-                }
-                ExperienceEntry.currentExperienceEntry.isActive = productActiveStatus;
+                saveExperience();
             }
         }
 
@@ -97,6 +99,80 @@ namespace SchoolDirectory
                 ;
                 ActiveForm.Close();
             }
+        }
+
+        private void addProductButton_Click(object sender, EventArgs e)
+        {
+            var newForm = new AddFromList();
+            newForm.addMode = AddFromList.addModeEnum.Product;
+            newForm.parentForm = this;
+            newForm.Show();
+        }
+
+        public void formRefresh()
+        {
+            addProductButton.Enabled = true;
+            groupNameBox.Text = SchoolEntry.currentEntry.schoolName;
+            scopeNameBox.Text = SchoolEntry.currentEntry.schoolScope;
+            noteTextbox.Text = SchoolEntry.currentEntry.schoolNotes;
+            productSource.DataSource = SchoolEntry.currentEntry.products;
+            productsList.DataSource = productSource;
+            productSource.ResetBindings(true);
+            productsList.DisplayMember = "productName";
+            if (SchoolEntry.currentEntry.director != null)
+            {
+                directorName.Text = SchoolEntry.currentEntry.director.contactName;
+            }
+            if (SchoolEntry.currentEntry.primaryContact != null)
+            {
+                primaryContactName.Text = SchoolEntry.currentEntry.primaryContact.contactName;
+            }
+        }
+        void loadExperience(ExperienceEntry exp)
+        {
+            ExperienceEntry.currentExperienceEntry = exp;
+            if (exp.isActive)
+            {
+                activeRadioFalse.Checked = false;
+                activeRadioTrue.Checked = true;
+            }
+            else
+            {
+                activeRadioFalse.Checked = true;
+                activeRadioTrue.Checked = false;
+            }
+            purchaseDateTextBox.Text = exp.purchaseDate;
+            cancelDateTextBox.Text = exp.cancelDate;
+            productCostTextBox.Text = exp.cost;
+            experienceNotesTextBox.Text = exp.notes;
+        }
+        void saveExperience()
+        {
+            if (ExperienceEntry.currentExperienceEntry != null)
+            {
+                if (activeRadioFalse.Checked)
+                {
+                    ExperienceEntry.currentExperienceEntry.isActive = false;
+                }
+                else
+                {
+                    ExperienceEntry.currentExperienceEntry.isActive = true;
+                }
+                ExperienceEntry.currentExperienceEntry.purchaseDate = purchaseDateTextBox.Text;
+                ExperienceEntry.currentExperienceEntry.cancelDate = cancelDateTextBox.Text;
+                ExperienceEntry.currentExperienceEntry.cost = productCostTextBox.Text;
+                ExperienceEntry.currentExperienceEntry.notes = experienceNotesTextBox.Text;
+            }
+        }
+        private void removeProductButton_Click(object sender, EventArgs e)
+        {
+            formRefresh();
+        }
+
+        private void productsList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            saveExperience();
+            loadExperience(productsList.SelectedItem as ExperienceEntry);
         }
     }
 }

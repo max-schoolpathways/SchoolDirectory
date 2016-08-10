@@ -54,12 +54,13 @@
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.selectButton, 2);
             this.selectButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.selectButton.Location = new System.Drawing.Point(3, 151);
+            this.selectButton.Location = new System.Drawing.Point(3, 150);
             this.selectButton.Name = "selectButton";
-            this.selectButton.Size = new System.Drawing.Size(199, 25);
+            this.selectButton.Size = new System.Drawing.Size(199, 26);
             this.selectButton.TabIndex = 0;
             this.selectButton.Text = "Select";
             this.selectButton.UseVisualStyleBackColor = true;
+            this.selectButton.Click += new System.EventHandler(this.selectButton_Click);
             // 
             // listBox
             // 
@@ -68,7 +69,7 @@
             this.listBox.FormattingEnabled = true;
             this.listBox.Location = new System.Drawing.Point(3, 3);
             this.listBox.Name = "listBox";
-            this.listBox.Size = new System.Drawing.Size(199, 142);
+            this.listBox.Size = new System.Drawing.Size(199, 141);
             this.listBox.TabIndex = 1;
             // 
             // AddFromList

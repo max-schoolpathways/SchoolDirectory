@@ -214,6 +214,18 @@ namespace SchoolClasses
                 _product = value;
             }
         }
+        private string _productName;
+        public string productName
+        {
+            get
+            {
+                return product.name;
+            }
+            set
+            {
+
+            }
+        }
         public bool isActive;
         public string purchaseDate;
         public string cancelDate;

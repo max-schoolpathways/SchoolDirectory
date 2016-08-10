@@ -66,6 +66,8 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.contactDeleteButton = new System.Windows.Forms.Button();
             this.contactSavebutton = new System.Windows.Forms.Button();
+            this.toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.breakpointToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.WrapperTable.SuspendLayout();
             this.MainWindowToolstrip.SuspendLayout();
             this.RecordStatusStrip.SuspendLayout();
@@ -100,7 +102,8 @@
             // 
             this.MainWindowToolstrip.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainWindowToolstrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripDropDownButton1});
+            this.toolStripDropDownButton1,
+            this.toolStripDropDownButton2});
             this.MainWindowToolstrip.Location = new System.Drawing.Point(0, 0);
             this.MainWindowToolstrip.Name = "MainWindowToolstrip";
             this.MainWindowToolstrip.Size = new System.Drawing.Size(644, 29);
@@ -180,7 +183,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.36111F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.63889F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 82F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 153F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 154F));
             this.tableLayoutPanel1.Controls.Add(this.nameField, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.loginField, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.emailField, 3, 0);
@@ -213,7 +216,7 @@
             // nameField
             // 
             this.nameField.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.nameField.Location = new System.Drawing.Point(95, 5);
+            this.nameField.Location = new System.Drawing.Point(94, 5);
             this.nameField.Name = "nameField";
             this.nameField.Size = new System.Drawing.Size(91, 20);
             this.nameField.TabIndex = 0;
@@ -222,7 +225,7 @@
             // loginField
             // 
             this.loginField.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.loginField.Location = new System.Drawing.Point(95, 36);
+            this.loginField.Location = new System.Drawing.Point(94, 36);
             this.loginField.Name = "loginField";
             this.loginField.Size = new System.Drawing.Size(91, 20);
             this.loginField.TabIndex = 1;
@@ -231,7 +234,7 @@
             // emailField
             // 
             this.emailField.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.emailField.Location = new System.Drawing.Point(302, 5);
+            this.emailField.Location = new System.Drawing.Point(301, 5);
             this.emailField.Name = "emailField";
             this.emailField.Size = new System.Drawing.Size(92, 20);
             this.emailField.TabIndex = 0;
@@ -241,7 +244,7 @@
             // 
             this.positionLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.positionLabel.AutoSize = true;
-            this.positionLabel.Location = new System.Drawing.Point(252, 40);
+            this.positionLabel.Location = new System.Drawing.Point(251, 40);
             this.positionLabel.Name = "positionLabel";
             this.positionLabel.Size = new System.Drawing.Size(44, 13);
             this.positionLabel.TabIndex = 1;
@@ -252,7 +255,7 @@
             this.emailLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.emailLabel.AutoSize = true;
             this.emailLabel.LinkColor = System.Drawing.Color.Navy;
-            this.emailLabel.Location = new System.Drawing.Point(264, 8);
+            this.emailLabel.Location = new System.Drawing.Point(263, 8);
             this.emailLabel.Name = "emailLabel";
             this.emailLabel.Size = new System.Drawing.Size(32, 13);
             this.emailLabel.TabIndex = 1;
@@ -263,7 +266,7 @@
             // positionField
             // 
             this.positionField.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.positionField.Location = new System.Drawing.Point(302, 36);
+            this.positionField.Location = new System.Drawing.Point(301, 36);
             this.positionField.Name = "positionField";
             this.positionField.Size = new System.Drawing.Size(91, 20);
             this.positionField.TabIndex = 2;
@@ -272,7 +275,7 @@
             // phoneField2
             // 
             this.phoneField2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.phoneField2.Location = new System.Drawing.Point(302, 69);
+            this.phoneField2.Location = new System.Drawing.Point(301, 69);
             this.phoneField2.Name = "phoneField2";
             this.phoneField2.Size = new System.Drawing.Size(92, 20);
             this.phoneField2.TabIndex = 0;
@@ -281,7 +284,7 @@
             // phoneField1
             // 
             this.phoneField1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.phoneField1.Location = new System.Drawing.Point(95, 69);
+            this.phoneField1.Location = new System.Drawing.Point(94, 69);
             this.phoneField1.Name = "phoneField1";
             this.phoneField1.Size = new System.Drawing.Size(80, 20);
             this.phoneField1.TabIndex = 0;
@@ -291,7 +294,7 @@
             // 
             this.phoneLabel2.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.phoneLabel2.AutoSize = true;
-            this.phoneLabel2.Location = new System.Drawing.Point(246, 72);
+            this.phoneLabel2.Location = new System.Drawing.Point(245, 72);
             this.phoneLabel2.Name = "phoneLabel2";
             this.phoneLabel2.Size = new System.Drawing.Size(50, 13);
             this.phoneLabel2.TabIndex = 1;
@@ -301,7 +304,7 @@
             // 
             this.phoneLabel1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.phoneLabel1.AutoSize = true;
-            this.phoneLabel1.Location = new System.Drawing.Point(39, 72);
+            this.phoneLabel1.Location = new System.Drawing.Point(38, 72);
             this.phoneLabel1.Name = "phoneLabel1";
             this.phoneLabel1.Size = new System.Drawing.Size(50, 13);
             this.phoneLabel1.TabIndex = 1;
@@ -315,7 +318,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(3, 132);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(211, 170);
+            this.groupBox1.Size = new System.Drawing.Size(210, 170);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "School Notes";
@@ -325,7 +328,7 @@
             this.schoolNotebox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.schoolNotebox.Location = new System.Drawing.Point(3, 16);
             this.schoolNotebox.Name = "schoolNotebox";
-            this.schoolNotebox.Size = new System.Drawing.Size(205, 151);
+            this.schoolNotebox.Size = new System.Drawing.Size(204, 151);
             this.schoolNotebox.TabIndex = 5;
             this.schoolNotebox.Text = "School Notes";
             // 
@@ -333,7 +336,7 @@
             // 
             this.loginLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.loginLabel.AutoSize = true;
-            this.loginLabel.Location = new System.Drawing.Point(56, 40);
+            this.loginLabel.Location = new System.Drawing.Point(55, 40);
             this.loginLabel.Name = "loginLabel";
             this.loginLabel.Size = new System.Drawing.Size(33, 13);
             this.loginLabel.TabIndex = 0;
@@ -343,7 +346,7 @@
             // 
             this.nameLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.nameLabel.AutoSize = true;
-            this.nameLabel.Location = new System.Drawing.Point(51, 8);
+            this.nameLabel.Location = new System.Drawing.Point(50, 8);
             this.nameLabel.Name = "nameLabel";
             this.nameLabel.Size = new System.Drawing.Size(38, 13);
             this.nameLabel.TabIndex = 1;
@@ -353,7 +356,7 @@
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.noteGroupBox, 2);
             this.noteGroupBox.Controls.Add(this.contactNoteBox);
-            this.noteGroupBox.Location = new System.Drawing.Point(220, 132);
+            this.noteGroupBox.Location = new System.Drawing.Point(219, 132);
             this.noteGroupBox.Name = "noteGroupBox";
             this.noteGroupBox.Size = new System.Drawing.Size(221, 170);
             this.noteGroupBox.TabIndex = 9;
@@ -374,7 +377,7 @@
             this.isDirectorCheckbox.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.isDirectorCheckbox.AutoSize = true;
             this.tableLayoutPanel1.SetColumnSpan(this.isDirectorCheckbox, 2);
-            this.isDirectorCheckbox.Location = new System.Drawing.Point(140, 103);
+            this.isDirectorCheckbox.Location = new System.Drawing.Point(139, 103);
             this.isDirectorCheckbox.Name = "isDirectorCheckbox";
             this.isDirectorCheckbox.Size = new System.Drawing.Size(74, 17);
             this.isDirectorCheckbox.TabIndex = 13;
@@ -484,6 +487,24 @@
             this.contactSavebutton.UseVisualStyleBackColor = true;
             this.contactSavebutton.Click += new System.EventHandler(this.contactSavebutton_Click);
             // 
+            // toolStripDropDownButton2
+            // 
+            this.toolStripDropDownButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripDropDownButton2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.breakpointToolStripMenuItem});
+            this.toolStripDropDownButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton2.Image")));
+            this.toolStripDropDownButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton2.Name = "toolStripDropDownButton2";
+            this.toolStripDropDownButton2.Size = new System.Drawing.Size(55, 26);
+            this.toolStripDropDownButton2.Text = "Debug";
+            // 
+            // breakpointToolStripMenuItem
+            // 
+            this.breakpointToolStripMenuItem.Name = "breakpointToolStripMenuItem";
+            this.breakpointToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.breakpointToolStripMenuItem.Text = "Breakpoint";
+            this.breakpointToolStripMenuItem.Click += new System.EventHandler(this.breakpointToolStripMenuItem_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -550,6 +571,8 @@
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
         private System.Windows.Forms.ToolStripMenuItem addNewProductToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewProductsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton2;
+        private System.Windows.Forms.ToolStripMenuItem breakpointToolStripMenuItem;
     }
 }
 
