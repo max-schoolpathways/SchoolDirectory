@@ -55,14 +55,13 @@ namespace SchoolClasses
                 foreach (var contact in schoolContacts)
                 {
                     contacts.Add(contact);
-                    //contact.Delete(contact);
                 }
                 foreach (var contact in contacts)
                 {
                     contact.Delete(contact);
                 }
             }
-            SchoolEntry.allSchools.Remove(this);
+            allSchools.Remove(this);
             director = null;
             primaryContact = null;
             AppController.saveRecords();
@@ -80,7 +79,7 @@ namespace SchoolClasses
             {
                 foreach(ExperienceEntry eproduct in school.products)
                 {
-                    if(eproduct.product == product)
+                    if(eproduct.productName == product.name)
                     {
                         schoolList.Add(school);
                     }
@@ -214,7 +213,7 @@ namespace SchoolClasses
                 _product = value;
             }
         }
-        private string _productName;
+        //private string _productName;
         public string productName
         {
             get
@@ -235,6 +234,12 @@ namespace SchoolClasses
         {
             product = product_;
             school = school_;
+        }
+        public void Delete()
+        {
+            school.products.Remove(this);
+            school = null;
+            product = null;
         }
     }
 

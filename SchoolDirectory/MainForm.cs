@@ -219,15 +219,18 @@ namespace SchoolDirectory
 
         private void addNewProductToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            EntryBuilder.mode = EntryBuilder.modeEnum.New;
-            new ProductInfo().Show();
+            ProductInfo newForm = new ProductInfo();
+            newForm.entryMode = ProductInfo.entryModeEnum.New;
+            newForm.Show();
+
         }
 
         private void viewProductsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            EntryBuilder.mode = EntryBuilder.modeEnum.Existing;
             ProductEntry.currentProduct = ProductEntry.allProducts[0];
-            new ProductInfo().Show();
+            ProductInfo newForm = new ProductInfo();
+            newForm.entryMode = ProductInfo.entryModeEnum.Existing;
+            newForm.Show();
         }
 
         private void breakpointToolStripMenuItem_Click(object sender, EventArgs e)

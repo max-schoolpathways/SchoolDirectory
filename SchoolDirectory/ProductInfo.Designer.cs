@@ -46,8 +46,8 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.usersListBox = new System.Windows.Forms.ListBox();
             this.productListGroupBox = new System.Windows.Forms.GroupBox();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.productListBox = new System.Windows.Forms.ListBox();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -264,6 +264,7 @@
             this.productListBox.Name = "productListBox";
             this.productListBox.Size = new System.Drawing.Size(85, 83);
             this.productListBox.TabIndex = 0;
+            this.productListBox.SelectedIndexChanged += new System.EventHandler(this.productListBox_SelectedIndexChanged);
             // 
             // ProductInfo
             // 

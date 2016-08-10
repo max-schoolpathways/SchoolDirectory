@@ -143,6 +143,7 @@ namespace SchoolDirectory
         }
         private void removeProductButton_Click(object sender, EventArgs e)
         {
+            ExperienceEntry.currentExperienceEntry.Delete();
             formRefresh();
         }
 

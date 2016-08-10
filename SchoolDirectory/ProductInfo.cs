@@ -15,6 +15,8 @@ namespace SchoolDirectory
     {
         private BindingSource userSource = new BindingSource();
         private BindingSource productSource = new BindingSource();
+        public enum entryModeEnum {New,Existing}
+        public entryModeEnum entryMode;
         public ProductInfo()
         {
             InitializeComponent();
@@ -22,23 +24,10 @@ namespace SchoolDirectory
 
         private void ProductInfo_Load(object sender, EventArgs e)
         {
-            if(EntryBuilder.mode == EntryBuilder.modeEnum.Existing)
+            if(entryMode == entryModeEnum.Existing)
             {
                 productListGroupBox.Visible = true;
-                nameTextBox.Text = ProductEntry.currentProduct.name;
-                companyTextBox.Text = ProductEntry.currentProduct.company;
-                websiteTextBox.Text = ProductEntry.currentProduct.websiteURL;
-                costTextBox.Text = ProductEntry.currentProduct.cost;
-                descriptionTextBox.Text = ProductEntry.currentProduct.description;
-                userSource.DataSource = SchoolEntry.GetUsers(ProductEntry.currentProduct);
-                usersListBox.DataSource = userSource;
-                usersListBox.DisplayMember = "schoolScope";
-                userSource.ResetBindings(false);
-                productSource.DataSource = ProductEntry.allProducts;
-                productListBox.DataSource = productSource;
-                productListBox.DisplayMember = "name";
-                productSource.ResetBindings(false);
-
+                loadProduct();
             }else
             {
                 productListGroupBox.Visible = false;
@@ -48,7 +37,10 @@ namespace SchoolDirectory
         private void saveButton_Click(object sender, EventArgs e)
         {
             saveProduct();
-            ActiveForm.Close();
+            if (entryMode == entryModeEnum.New)
+            {
+                ActiveForm.Close();
+            }
         }
         void saveProduct()
         {
@@ -71,6 +63,28 @@ namespace SchoolDirectory
                 ProductEntry.allProducts.Add(savedEntry);
             }
             AppController.saveRecords();
+        }
+        void loadProduct()
+        {
+            nameTextBox.Text = ProductEntry.currentProduct.name;
+            companyTextBox.Text = ProductEntry.currentProduct.company;
+            websiteTextBox.Text = ProductEntry.currentProduct.websiteURL;
+            costTextBox.Text = ProductEntry.currentProduct.cost;
+            descriptionTextBox.Text = ProductEntry.currentProduct.description;
+            userSource.DataSource = SchoolEntry.GetUsers(ProductEntry.currentProduct);
+            usersListBox.DataSource = userSource;
+            usersListBox.DisplayMember = "schoolScope";
+            userSource.ResetBindings(false);
+            productSource.DataSource = ProductEntry.allProducts;
+            productListBox.DataSource = productSource;
+            productListBox.DisplayMember = "name";
+            productSource.ResetBindings(false);
+        }
+
+        private void productListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ProductEntry.currentProduct = productListBox.SelectedItem as ProductEntry;
+            loadProduct();
         }
     }
 }
