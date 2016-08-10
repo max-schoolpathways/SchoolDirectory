@@ -14,7 +14,7 @@ namespace SchoolDirectory
     public partial class GroupInfo : Form
     {
         private BindingSource productSource = new BindingSource();
-        private bool productActiveStatus = false;
+        //private bool productActiveStatus = false;
         public GroupInfo()
         {
             InitializeComponent();
@@ -96,10 +96,7 @@ namespace SchoolDirectory
             productsList.DataSource = productSource;
             productSource.ResetBindings(true);
             productsList.DisplayMember = "productName";
-            if(SchoolEntry.currentEntry.products.Count > 0)
-            {
-                loadExperience(SchoolEntry.currentEntry.products[0]);
-            }
+            
             if (SchoolEntry.currentEntry.director != null)
             {
                 directorName.Text = SchoolEntry.currentEntry.director.contactName;
@@ -109,10 +106,9 @@ namespace SchoolDirectory
                 primaryContactName.Text = SchoolEntry.currentEntry.primaryContact.contactName;
             }
         }
-        void loadExperience(ExperienceEntry exp)
+        void loadExperience()
         {
-            ExperienceEntry.currentExperienceEntry = exp;
-            if (exp.isActive)
+            if (ExperienceEntry.currentExperienceEntry.isActive)
             {
                 activeRadioFalse.Checked = false;
                 activeRadioTrue.Checked = true;
@@ -122,10 +118,10 @@ namespace SchoolDirectory
                 activeRadioFalse.Checked = true;
                 activeRadioTrue.Checked = false;
             }
-            purchaseDateTextBox.Text = exp.purchaseDate;
-            cancelDateTextBox.Text = exp.cancelDate;
-            productCostTextBox.Text = exp.cost;
-            experienceNotesTextBox.Text = exp.notes;
+            purchaseDateTextBox.Text = ExperienceEntry.currentExperienceEntry.purchaseDate;
+            cancelDateTextBox.Text = ExperienceEntry.currentExperienceEntry.cancelDate;
+            productCostTextBox.Text = ExperienceEntry.currentExperienceEntry.cost;
+            experienceNotesTextBox.Text = ExperienceEntry.currentExperienceEntry.notes;
         }
         void saveExperience()
         {
@@ -153,12 +149,18 @@ namespace SchoolDirectory
         private void productsList_SelectedIndexChanged(object sender, EventArgs e)
         {
             //saveExperience();
-            loadExperience(productsList.SelectedItem as ExperienceEntry);
+            ExperienceEntry.currentExperienceEntry = productsList.SelectedItem as ExperienceEntry;
+            loadExperience();
         }
 
         private void saveDetailsButton_Click(object sender, EventArgs e)
         {
             saveExperience();
+        }
+
+        private void GroupInfo_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            ExperienceEntry.currentExperienceEntry = null;
         }
     }
 }

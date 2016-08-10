@@ -48,6 +48,7 @@ namespace SchoolDirectory
         private void saveButton_Click(object sender, EventArgs e)
         {
             saveProduct();
+            ActiveForm.Close();
         }
         void saveProduct()
         {

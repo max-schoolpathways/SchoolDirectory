@@ -60,7 +60,7 @@ namespace SchoolDirectory
                     }
                     else
                     {
-                        MessageBox.Show("" + SchoolEntry.currentEntry.schoolName + " is already using " + newEntry.productName + "! Nothing has been done", "Duplicate Detected", MessageBoxButtons.OK);
+                        MessageBox.Show("" + SchoolEntry.currentEntry.schoolName + " is already using " + newEntry.productName + "! Nothing has been done.", "Duplicate Detected", MessageBoxButtons.OK);
                         ActiveForm.Close();
                     }
                 }
