@@ -44,9 +44,25 @@ namespace SchoolDirectory
                 if (parentType == typeof(GroupInfo))
                 {
                     var newEntry = new ExperienceEntry(selectedItem as ProductEntry,SchoolEntry.currentEntry);
-                SchoolEntry.currentEntry.products.Add(newEntry);
-                    var entryForm = parentForm as GroupInfo;
-                    entryForm.formRefresh();
+                    ExperienceEntry entryCheck = null;
+                    foreach(ExperienceEntry product in SchoolEntry.currentEntry.products)
+                    {
+                        if(newEntry.productName == product.productName)
+                        {
+                            entryCheck = product;
+                        }
+                    }
+                    if (entryCheck == null)
+                    {
+                        SchoolEntry.currentEntry.products.Add(newEntry);
+                        var entryForm = parentForm as GroupInfo;
+                        entryForm.formRefresh();
+                    }
+                    else
+                    {
+                        MessageBox.Show("" + SchoolEntry.currentEntry.schoolName + " is already using " + newEntry.productName + "! Nothing has been done", "Duplicate Detected", MessageBoxButtons.OK);
+                        ActiveForm.Close();
+                    }
                 }
             }
             ActiveForm.Close();

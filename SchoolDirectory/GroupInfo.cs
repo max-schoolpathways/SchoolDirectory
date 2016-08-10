@@ -25,30 +25,7 @@ namespace SchoolDirectory
             if(EntryBuilder.mode == EntryBuilder.modeEnum.Existing)
             {
                 formRefresh();
-                if(SchoolEntry.currentEntry.products.Count > 1)
-                {
-                    ExperienceEntry.currentExperienceEntry = SchoolEntry.currentEntry.products[0];
-                }
-                //Below moved to formRefresh();
-                /*
-                addProductButton.Enabled = true;
-                groupNameBox.Text = SchoolEntry.currentEntry.schoolName;
-                scopeNameBox.Text = SchoolEntry.currentEntry.schoolScope;
-                noteTextbox.Text = SchoolEntry.currentEntry.schoolNotes;
-                productSource.DataSource = SchoolEntry.currentEntry.products;
-                productsList.DataSource = productSource;
-                productsList.DisplayMember = "productName";
-                productSource.ResetBindings(false);
                 
-                if (SchoolEntry.currentEntry.director != null)
-                {
-                    directorName.Text = SchoolEntry.currentEntry.director.contactName;
-                }
-                if (SchoolEntry.currentEntry.primaryContact != null)
-                {
-                    primaryContactName.Text = SchoolEntry.currentEntry.primaryContact.contactName;
-                }
-                */
             }
             else
             {
@@ -119,6 +96,10 @@ namespace SchoolDirectory
             productsList.DataSource = productSource;
             productSource.ResetBindings(true);
             productsList.DisplayMember = "productName";
+            if(SchoolEntry.currentEntry.products.Count > 0)
+            {
+                loadExperience(SchoolEntry.currentEntry.products[0]);
+            }
             if (SchoolEntry.currentEntry.director != null)
             {
                 directorName.Text = SchoolEntry.currentEntry.director.contactName;
@@ -171,8 +152,13 @@ namespace SchoolDirectory
 
         private void productsList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            saveExperience();
+            //saveExperience();
             loadExperience(productsList.SelectedItem as ExperienceEntry);
+        }
+
+        private void saveDetailsButton_Click(object sender, EventArgs e)
+        {
+            saveExperience();
         }
     }
 }
