@@ -47,7 +47,6 @@
             this.usersListBox = new System.Windows.Forms.ListBox();
             this.productListGroupBox = new System.Windows.Forms.GroupBox();
             this.productListBox = new System.Windows.Forms.ListBox();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -272,7 +271,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(525, 503);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ProductInfo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ProductInfo";
             this.Load += new System.EventHandler(this.ProductInfo_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -306,6 +309,5 @@
         private System.Windows.Forms.ListBox usersListBox;
         private System.Windows.Forms.GroupBox productListGroupBox;
         private System.Windows.Forms.ListBox productListBox;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

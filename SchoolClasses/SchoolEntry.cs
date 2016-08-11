@@ -218,7 +218,7 @@ namespace SchoolClasses
         {
             get
             {
-                return product.name;
+                return _product.name;
             }
             set
             {
@@ -230,10 +230,10 @@ namespace SchoolClasses
         public string cancelDate;
         public string cost;
         public string notes;
-        public ExperienceEntry(ProductEntry product_, SchoolEntry school_)
+        public ExperienceEntry( ProductEntry product_, SchoolEntry school_)
         {
-            product = product_;
-            school = school_;
+             product = product_;
+             school = school_;
         }
         public void Delete()
         {
@@ -241,9 +241,77 @@ namespace SchoolClasses
             school = null;
             product = null;
         }
+        public void updateInfo()
+        {
+            productName = product.name;
+        }
     }
+    [Serializable()]
+    public class IssueEntry
+    {
+        public enum statusEnum {Open,Closed};
+        public statusEnum status = statusEnum.Open;
 
+        private List<SchoolEntry> _groupList = new List<SchoolEntry>();
+        public List<SchoolEntry> groupList
+        {
+            get
+            {
+                return _groupList;
+            }
+            set
+            {
+                _groupList = value;
+            }
+        }
 
+        private List<ProductEntry> _productsList = new List<ProductEntry>();
+        public List<ProductEntry> productsList
+        {
+            get
+            {
+                return _productsList;
+            }
+            set
+            {
+                _productsList = value;
+            }
+        }
+
+        private List<ContactEntry> _contactList = new List<ContactEntry>();
+        public List<ContactEntry> contactList
+        {
+            get
+            {
+                return _contactList;
+            }
+            set
+            {
+                _contactList = value;
+            }
+        }
+
+        private List<Comment> _comments = new List<Comment>();
+        public List<Comment> comments
+        {
+            get
+            {
+                return _comments;
+            }
+            set
+            {
+                _comments = value;
+            }
+        }
+
+        public int issueNumber;
+        public string issueTitle;
+        public string issueDescription;
+    }
+    public class Comment
+    {
+
+    }
     public class EntryBuilder
     {
         public enum modeEnum {New, Existing};

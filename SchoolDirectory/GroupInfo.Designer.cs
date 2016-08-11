@@ -63,6 +63,7 @@
             this.productCostTextBox = new System.Windows.Forms.TextBox();
             this.saveDetailsButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -81,7 +82,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36.875F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 63.125F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 58F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 118F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
             this.tableLayoutPanel1.Controls.Add(this.groupBox1, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 2, 0);
@@ -136,7 +137,7 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(153, 48);
+            this.label2.Location = new System.Drawing.Point(152, 48);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(52, 26);
             this.label2.TabIndex = 3;
@@ -157,7 +158,7 @@
             // 
             this.linkLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Location = new System.Drawing.Point(153, 133);
+            this.linkLabel2.Location = new System.Drawing.Point(152, 133);
             this.linkLabel2.Name = "linkLabel2";
             this.linkLabel2.Size = new System.Drawing.Size(52, 26);
             this.linkLabel2.TabIndex = 5;
@@ -170,7 +171,7 @@
             this.primaryContactName.AutoSize = true;
             this.primaryContactName.Location = new System.Drawing.Point(58, 133);
             this.primaryContactName.Name = "primaryContactName";
-            this.primaryContactName.Size = new System.Drawing.Size(89, 26);
+            this.primaryContactName.Size = new System.Drawing.Size(88, 26);
             this.primaryContactName.TabIndex = 6;
             this.primaryContactName.Text = "Primary Contact Name";
             // 
@@ -178,9 +179,9 @@
             // 
             this.directorName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.directorName.AutoSize = true;
-            this.directorName.Location = new System.Drawing.Point(211, 139);
+            this.directorName.Location = new System.Drawing.Point(210, 139);
             this.directorName.Name = "directorName";
-            this.directorName.Size = new System.Drawing.Size(113, 13);
+            this.directorName.Size = new System.Drawing.Size(114, 13);
             this.directorName.TabIndex = 7;
             this.directorName.Text = "Group Director Name";
             // 
@@ -189,21 +190,21 @@
             this.groupNameBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.groupNameBox.Location = new System.Drawing.Point(58, 51);
             this.groupNameBox.Name = "groupNameBox";
-            this.groupNameBox.Size = new System.Drawing.Size(89, 20);
+            this.groupNameBox.Size = new System.Drawing.Size(88, 20);
             this.groupNameBox.TabIndex = 12;
             // 
             // scopeNameBox
             // 
             this.scopeNameBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.scopeNameBox.Location = new System.Drawing.Point(211, 51);
+            this.scopeNameBox.Location = new System.Drawing.Point(210, 51);
             this.scopeNameBox.Name = "scopeNameBox";
             this.scopeNameBox.Size = new System.Drawing.Size(99, 20);
             this.scopeNameBox.TabIndex = 13;
             // 
             // saveButton
             // 
-            this.saveButton.Dock = System.Windows.Forms.DockStyle.Right;
-            this.saveButton.Location = new System.Drawing.Point(157, 359);
+            this.saveButton.Dock = System.Windows.Forms.DockStyle.Left;
+            this.saveButton.Location = new System.Drawing.Point(3, 359);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(94, 28);
             this.saveButton.TabIndex = 8;
@@ -213,10 +214,10 @@
             // 
             // deleteButton
             // 
-            this.deleteButton.Dock = System.Windows.Forms.DockStyle.Left;
-            this.deleteButton.Location = new System.Drawing.Point(257, 359);
+            this.deleteButton.Dock = System.Windows.Forms.DockStyle.Right;
+            this.deleteButton.Location = new System.Drawing.Point(242, 359);
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(87, 28);
+            this.deleteButton.Size = new System.Drawing.Size(102, 28);
             this.deleteButton.TabIndex = 9;
             this.deleteButton.Text = "Delete Group";
             this.deleteButton.UseVisualStyleBackColor = true;
@@ -224,7 +225,7 @@
             // 
             // tabControl1
             // 
-            this.tableLayoutPanel3.SetColumnSpan(this.tabControl1, 2);
+            this.tableLayoutPanel3.SetColumnSpan(this.tabControl1, 3);
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -310,6 +311,7 @@
             this.productsList.Sorted = true;
             this.productsList.TabIndex = 0;
             this.productsList.SelectedIndexChanged += new System.EventHandler(this.productsList_SelectedIndexChanged);
+            this.productsList.DoubleClick += new System.EventHandler(this.productsList_DoubleClick);
             // 
             // label3
             // 
@@ -471,12 +473,14 @@
             // 
             // tableLayoutPanel3
             // 
-            this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 73.19884F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.80115F));
+            this.tableLayoutPanel3.ColumnCount = 3;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel3.Controls.Add(this.saveButton, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.tabControl1, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.deleteButton, 1, 1);
+            this.tableLayoutPanel3.Controls.Add(this.deleteButton, 2, 1);
+            this.tableLayoutPanel3.Controls.Add(this.button1, 1, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
@@ -487,13 +491,25 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(347, 390);
             this.tableLayoutPanel3.TabIndex = 15;
             // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button1.Location = new System.Drawing.Point(118, 359);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(109, 28);
+            this.button1.TabIndex = 15;
+            this.button1.Text = "View Issues";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // GroupInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(347, 390);
             this.Controls.Add(this.tableLayoutPanel3);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "GroupInfo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "GroupInfo";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.GroupInfo_FormClosed);
             this.Load += new System.EventHandler(this.GroupInfo_Load);
@@ -551,5 +567,6 @@
         private System.Windows.Forms.RichTextBox experienceNotesTextBox;
         private System.Windows.Forms.TextBox productCostTextBox;
         private System.Windows.Forms.Button saveDetailsButton;
+        private System.Windows.Forms.Button button1;
     }
 }

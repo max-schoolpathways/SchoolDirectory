@@ -151,6 +151,7 @@ namespace SchoolDirectory
         {
             //saveExperience();
             ExperienceEntry.currentExperienceEntry = productsList.SelectedItem as ExperienceEntry;
+            ExperienceEntry.currentExperienceEntry.updateInfo();
             loadExperience();
         }
 
@@ -162,6 +163,19 @@ namespace SchoolDirectory
         private void GroupInfo_FormClosed(object sender, FormClosedEventArgs e)
         {
             ExperienceEntry.currentExperienceEntry = null;
+        }
+
+        private void productsList_DoubleClick(object sender, EventArgs e)
+        {
+            ExperienceEntry selectedExp = productsList.SelectedItem as ExperienceEntry;
+
+            ProductEntry.currentProduct = selectedExp.product;
+            ProductInfo newForm = new ProductInfo();
+            newForm.entryMode = ProductInfo.entryModeEnum.Existing;
+            
+            newForm.Show();
+            newForm.loadProduct();
+
         }
     }
 }

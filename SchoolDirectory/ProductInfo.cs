@@ -64,7 +64,7 @@ namespace SchoolDirectory
             }
             AppController.saveRecords();
         }
-        void loadProduct()
+        public void loadProduct()
         {
             nameTextBox.Text = ProductEntry.currentProduct.name;
             companyTextBox.Text = ProductEntry.currentProduct.company;
