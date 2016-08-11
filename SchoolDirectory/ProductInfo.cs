@@ -45,7 +45,7 @@ namespace SchoolDirectory
         void saveProduct()
         {
             ProductEntry savedEntry;
-            if (EntryBuilder.mode == EntryBuilder.modeEnum.Existing)
+            if (entryMode == entryModeEnum.Existing)
             {
                 savedEntry = ProductEntry.currentProduct;
             }
