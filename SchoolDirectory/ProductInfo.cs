@@ -58,6 +58,7 @@ namespace SchoolDirectory
             savedEntry.websiteURL = websiteTextBox.Text;
             savedEntry.cost = costTextBox.Text;
             savedEntry.description = descriptionTextBox.Text;
+            savedEntry.notes = productNotesTextBox.Text;
             if (!ProductEntry.allProducts.Contains(savedEntry))
             {
                 ProductEntry.allProducts.Add(savedEntry);
@@ -72,6 +73,7 @@ namespace SchoolDirectory
             costTextBox.Text = ProductEntry.currentProduct.cost;
             descriptionTextBox.Text = ProductEntry.currentProduct.description;
             userSource.DataSource = SchoolEntry.GetUsers(ProductEntry.currentProduct);
+            productNotesTextBox.Text = ProductEntry.currentProduct.notes;
             usersListBox.DataSource = userSource;
             usersListBox.DisplayMember = "schoolScope";
             userSource.ResetBindings(false);

@@ -108,20 +108,23 @@ namespace SchoolDirectory
         }
         void loadExperience()
         {
-            if (ExperienceEntry.currentExperienceEntry.isActive)
+            if (ExperienceEntry.currentExperienceEntry != null)
             {
-                activeRadioFalse.Checked = false;
-                activeRadioTrue.Checked = true;
+                if (ExperienceEntry.currentExperienceEntry.isActive)
+                {
+                    activeRadioFalse.Checked = false;
+                    activeRadioTrue.Checked = true;
+                }
+                else
+                {
+                    activeRadioFalse.Checked = true;
+                    activeRadioTrue.Checked = false;
+                }
+                purchaseDateTextBox.Text = ExperienceEntry.currentExperienceEntry.purchaseDate;
+                cancelDateTextBox.Text = ExperienceEntry.currentExperienceEntry.cancelDate;
+                productCostTextBox.Text = ExperienceEntry.currentExperienceEntry.cost;
+                experienceNotesTextBox.Text = ExperienceEntry.currentExperienceEntry.notes;
             }
-            else
-            {
-                activeRadioFalse.Checked = true;
-                activeRadioTrue.Checked = false;
-            }
-            purchaseDateTextBox.Text = ExperienceEntry.currentExperienceEntry.purchaseDate;
-            cancelDateTextBox.Text = ExperienceEntry.currentExperienceEntry.cancelDate;
-            productCostTextBox.Text = ExperienceEntry.currentExperienceEntry.cost;
-            experienceNotesTextBox.Text = ExperienceEntry.currentExperienceEntry.notes;
         }
         void saveExperience()
         {
@@ -151,7 +154,10 @@ namespace SchoolDirectory
         {
             //saveExperience();
             ExperienceEntry.currentExperienceEntry = productsList.SelectedItem as ExperienceEntry;
-            ExperienceEntry.currentExperienceEntry.updateInfo();
+            if (ExperienceEntry.currentExperienceEntry != null)
+            {
+                ExperienceEntry.currentExperienceEntry.updateInfo();
+            }
             loadExperience();
         }
 

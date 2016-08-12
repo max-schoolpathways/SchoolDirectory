@@ -70,6 +70,7 @@
             this.listBox.Location = new System.Drawing.Point(3, 3);
             this.listBox.Name = "listBox";
             this.listBox.Size = new System.Drawing.Size(199, 141);
+            this.listBox.Sorted = true;
             this.listBox.TabIndex = 1;
             // 
             // AddFromList

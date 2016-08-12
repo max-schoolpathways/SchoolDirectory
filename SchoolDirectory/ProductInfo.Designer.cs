@@ -146,7 +146,7 @@
             this.descriptionTextBox.Location = new System.Drawing.Point(3, 16);
             this.descriptionTextBox.Name = "descriptionTextBox";
             this.descriptionTextBox.Size = new System.Drawing.Size(513, 98);
-            this.descriptionTextBox.TabIndex = 0;
+            this.descriptionTextBox.TabIndex = 5;
             this.descriptionTextBox.Text = "";
             // 
             // groupBox2
@@ -167,7 +167,7 @@
             this.productNotesTextBox.Location = new System.Drawing.Point(3, 16);
             this.productNotesTextBox.Name = "productNotesTextBox";
             this.productNotesTextBox.Size = new System.Drawing.Size(237, 102);
-            this.productNotesTextBox.TabIndex = 0;
+            this.productNotesTextBox.TabIndex = 6;
             this.productNotesTextBox.Text = "";
             // 
             // nameTextBox
@@ -176,7 +176,7 @@
             this.nameTextBox.Location = new System.Drawing.Point(100, 124);
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(100, 20);
-            this.nameTextBox.TabIndex = 7;
+            this.nameTextBox.TabIndex = 1;
             // 
             // companyTextBox
             // 
@@ -184,7 +184,7 @@
             this.companyTextBox.Location = new System.Drawing.Point(396, 124);
             this.companyTextBox.Name = "companyTextBox";
             this.companyTextBox.Size = new System.Drawing.Size(100, 20);
-            this.companyTextBox.TabIndex = 8;
+            this.companyTextBox.TabIndex = 2;
             // 
             // websiteTextBox
             // 
@@ -192,7 +192,7 @@
             this.websiteTextBox.Location = new System.Drawing.Point(100, 180);
             this.websiteTextBox.Name = "websiteTextBox";
             this.websiteTextBox.Size = new System.Drawing.Size(100, 20);
-            this.websiteTextBox.TabIndex = 9;
+            this.websiteTextBox.TabIndex = 3;
             // 
             // costTextBox
             // 
@@ -200,7 +200,7 @@
             this.costTextBox.Location = new System.Drawing.Point(396, 180);
             this.costTextBox.Name = "costTextBox";
             this.costTextBox.Size = new System.Drawing.Size(100, 20);
-            this.costTextBox.TabIndex = 10;
+            this.costTextBox.TabIndex = 4;
             // 
             // saveButton
             // 
@@ -262,6 +262,7 @@
             this.productListBox.Location = new System.Drawing.Point(3, 16);
             this.productListBox.Name = "productListBox";
             this.productListBox.Size = new System.Drawing.Size(85, 83);
+            this.productListBox.Sorted = true;
             this.productListBox.TabIndex = 0;
             this.productListBox.SelectedIndexChanged += new System.EventHandler(this.productListBox_SelectedIndexChanged);
             // 

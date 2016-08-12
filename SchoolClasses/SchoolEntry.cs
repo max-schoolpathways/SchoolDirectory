@@ -325,7 +325,7 @@ namespace SchoolClasses
         //public static ContactEntry currentContact;
 
         
-        public static string directory = "C://Users//Public//SchoolDirectory//dev";
+        public static string directory = "C://Users//Public//SchoolDirectory//data";
         public static string groupPath = directory + "//groupData.bin";
         public static string productPath = directory + "//productData.bin";
 
