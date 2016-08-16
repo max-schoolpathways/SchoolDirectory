@@ -183,5 +183,10 @@ namespace SchoolDirectory
             newForm.loadProduct();
 
         }
+
+        private void jumpButton_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://cworks.plsis.com/mod.php/cw/jumpto.php?scope_title=" + SchoolEntry.currentEntry.schoolScope);
+        }
     }
 }
